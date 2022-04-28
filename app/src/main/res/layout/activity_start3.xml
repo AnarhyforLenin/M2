@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#f0fad7"
+    android:layout_height="match_parent"
+    tools:context=".Start2">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/group1"
+        android:layout_height="70sp"
+        android:padding="7dp"
+
+        android:background="#b8d480"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:id="@+id/text1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:autoSizeMaxTextSize="25dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:gravity="center"
+            android:text="Пользовательские настройки"
+            android:textSize="21dp"
+            android:textColor="#6a9c53"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group2"
+        android:layout_height="50sp"
+        android:padding="5dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:id="@+id/text2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:autoSizeMaxTextSize="35sp"
+            android:autoSizeMinTextSize="5sp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:fontFamily="@font/fontone"
+            android:text="(Никаких сложных настроек. Просто выберите, какой режим приложения вам будет комфортнее, и можно ли ему отравлять вам уведомления:з)"
+            android:textSize="21dp"
+            android:textColor="#96B160"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group3"
+        android:layout_height="380dp"
+        android:padding="6dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/radioGroup"
+            android:orientation="vertical">
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="125sp"
+                android:textColor="#6a9c53"
+                android:text="@string/multiplelines"
+                android:textSize="20sp"
+                android:fontFamily="@font/fontone"
+                android:id="@+id/r1"
+                android:buttonTint="#6a9c53"
+                android:visibility="visible"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="70sp"
+                android:textSize="20sp"
+                android:fontFamily="@font/fontone"
+                android:visibility="gone"
+                android:id="@+id/e1"
+                android:hint="Как вас зовут?"
+                android:inputType="textCapSentences"/>
+            <Button
+                android:layout_width="150sp"
+                android:layout_height="50sp"
+                android:textSize="20sp"
+                android:fontFamily="@font/fontone"
+                android:backgroundTint="#b8d480"
+                android:visibility="gone"
+                android:id="@+id/b3"
+                android:text="Принять"
+                android:textColor="#6a9c53"
+                />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="125sp"
+                android:text="@string/multiplelines2"
+                android:textSize="20sp"
+                android:textColor="#6a9c53"
+                android:fontFamily="@font/fontone"
+                android:buttonTint="#6a9c53"
+                android:id="@+id/r2"
+                android:visibility="visible"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="70sp"
+                android:textSize="20sp"
+                android:fontFamily="@font/fontone"
+                android:buttonTint="#6a9c53"
+                android:visibility="gone"
+                android:id="@+id/e2"
+                android:hint="Как тебя зовут?:)"
+                android:inputType="textCapSentences"/>
+
+            <RadioGroup
+                android:layout_width="150sp"
+                android:layout_height="80sp"
+                android:id="@+id/gg2"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:text="Он/его"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/fontone"
+                    android:buttonTint="#6a9c53"
+                    android:textColor="#6a9c53"
+                    android:id="@+id/he"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:text="Она/её"
+                    android:textColor="#6a9c53"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/fontone"
+                    android:buttonTint="#6a9c53"
+                    android:id="@+id/she"/>
+            </RadioGroup>
+            <Button
+                android:layout_width="120sp"
+                android:layout_height="60sp"
+                android:textSize="15sp"
+                android:fontFamily="@font/fontone"
+                android:backgroundTint="#b8d480"
+                android:visibility="gone"
+                android:id="@+id/b4"
+                android:text="Принять"
+                android:textColor="#6a9c53"
+                />
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="125sp"
+                android:textColor="#6a9c53"
+                android:text="@string/multiplelines3"
+                android:textSize="20sp"
+                android:fontFamily="@font/fontone"
+                android:buttonTint="#6a9c53"
+                android:id="@+id/r3"
+                android:visibility="visible"/>
+            <ImageButton
+                android:id="@+id/next33_button"
+                android:layout_width="200sp"
+                android:layout_height="140sp"
+                android:adjustViewBounds="true"
+                android:paddingRight="-60sp"
+                android:layout_gravity="right"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/button_next"
+                android:visibility="gone"
+                />
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</LinearLayout>

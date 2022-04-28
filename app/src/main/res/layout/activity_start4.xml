@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/main_background"
+    android:backgroundTintMode="src_atop"
+    android:backgroundTint="#b8d480"
+    android:layout_height="match_parent"
+
+    tools:context=".Start4">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/group2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1">
+
+
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:autoSizeMaxTextSize="30dp"
+            android:autoSizeMinTextSize="1dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="Это приложение полностью бесплатное. Тут нет премиальной версии или дополнительных возможностей, которые можно приобрести. Купить можно только красивые предметики в игре, которые никак не влияют на функционал.\nМы хотели, чтобы это приложение было добрым и уютным без ограничений. Поэтому, если вы захотите поддержать нас, то всегда это можете сделать, украсив комнату Карамболы, или по кнопке &quot;Поддержать авторов&quot;, отмеченной звездочкой&#9734;"
+            android:textColor="#6a9c53"
+            android:textSize="21dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.607"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="280sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group5"
+        android:layout_height="175sp"
+        android:paddingRight="-90sp"
+
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_gravity="right">
+
+
+        <ImageButton
+            android:id="@+id/next22_button"
+            android:layout_width="230sp"
+            android:layout_height="170sp"
+            android:adjustViewBounds="true"
+            android:paddingRight="-60sp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/button_next" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

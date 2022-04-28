@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#03E2FF"
+    android:layout_height="match_parent"
+    tools:context=".Start2">
+
+        <ImageView
+
+            android:id="@+id/Anim1"
+            android:layout_width="150sp"
+            android:layout_height="150sp"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/circ_img" />
+
+        <ImageView
+            android:id="@+id/Anim2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/circ_img" />
+
+
+        <TextView
+            android:id="@+id/taimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/Anim1"
+            android:layout_alignTop="@+id/Anim1"
+            android:layout_alignEnd="@+id/Anim1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="-63dp"
+            android:layout_marginTop="-45dp"
+            android:layout_marginEnd="-62dp"
+            android:layout_marginBottom="244dp"
+            android:fontFamily="@font/fontone"
+            android:gravity="center"
+            android:textColor="#4CFF00"
+            android:textSize="200sp" />
+
+
+</RelativeLayout>

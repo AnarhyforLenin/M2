@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#f0fad7"
+    android:layout_height="match_parent"
+    tools:context=".Start2"
+    >
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/group1"
+        android:layout_height="20sp"
+        android:padding="7dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group2"
+        android:layout_height="50sp"
+        android:padding="5dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group3"
+        android:layout_height="330dp"
+        android:padding="6dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="320sp"
+            android:layout_centerInParent="true"
+            android:id="@+id/text_hello"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:autoSizeMaxTextSize="35dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:gravity="top|center_horizontal"
+            android:text="Добро пожаловать, \n"
+            android:textColor="#6a9c53"
+            app:layout_constraintHorizontal_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="270sp"
+            android:layout_centerInParent="true"
+            android:id="@+id/text_hello_name2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:autoSizeMaxTextSize="35dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:gravity="top|center_horizontal"
+            android:text=""
+            android:textColor="#6a9c53"
+            app:layout_constraintHorizontal_weight="1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="270sp"
+            android:layout_centerInParent="true"
+            android:id="@+id/text_hello_name3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:autoSizeMaxTextSize="35dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:gravity="top|center_horizontal"
+            android:text="солнце!"
+            android:textColor="#6a9c53"
+            app:layout_constraintHorizontal_weight="1"
+            android:visibility="gone"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="225sp"
+            android:layout_centerInParent="true"
+            android:id="@+id/pronounce1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:autoSizeMaxTextSize="35dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:gravity="top|center_horizontal"
+            android:text="Ты очень милый!"
+            android:textColor="#6a9c53"
+            app:layout_constraintHorizontal_weight="1"
+            android:visibility="gone"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="225sp"
+            android:layout_centerInParent="true"
+            android:id="@+id/pronounce2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:autoSizeMaxTextSize="35dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:gravity="top|center_horizontal"
+            android:text="Ты очень милая!"
+            android:visibility="gone"
+            android:textColor="#6a9c53"
+            app:layout_constraintHorizontal_weight="1"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="200sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group2"
+        android:id="@+id/group5"
+        android:layout_height="170dp"
+        android:padding="10dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_gravity="right"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/next34_button"
+            android:layout_width="230sp"
+            android:layout_height="170sp"
+            android:adjustViewBounds="true"
+            android:paddingRight="-60sp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/button_next" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

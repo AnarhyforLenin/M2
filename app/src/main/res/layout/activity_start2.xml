@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#f0fad7"
+    android:layout_height="match_parent"
+    tools:context=".Start2">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/group1"
+        android:layout_height="180dp"
+        android:paddingRight="7dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <ImageView
+
+            android:id="@+id/calendar"
+            android:layout_width="155sp"
+            android:layout_height="match_parent"
+            android:paddingLeft="-20sp"
+            android:paddingTop="10sp"
+            android:scaleType="fitStart"
+            android:src="@drawable/cal_img"
+            tools:ignore="MissingConstraints" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+
+            android:layout_centerInParent="true"
+            android:autoSizeMaxTextSize="18dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:gravity="center|center_vertical"
+            android:text="Это - календарь.\nВ нем можно отмечать всякую ерунду,\nприем таблеток,\nвести дневник настроения."
+            android:textColor="#6a9c53"
+            android:textSize="21dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group2"
+        android:layout_height="180dp"
+        android:padding="5dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+
+        <ImageView
+            android:id="@+id/game"
+            android:layout_width="180sp"
+            android:layout_height="match_parent"
+            android:paddingLeft="-20sp"
+            android:paddingRight="-10sp"
+            android:paddingTop="10sp"
+            android:scaleType="fitStart"
+            android:src="@drawable/game_img"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="205sp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:autoSizeMaxTextSize="18dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:gravity="center|center_vertical"
+            android:text="Это - игры.\nОни помогут расслабиться."
+            android:textColor="#6a9c53"
+            android:textSize="21dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group3"
+        android:layout_height="180dp"
+        android:padding="6dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+
+        <ImageView
+
+            android:id="@+id/tools"
+            android:layout_width="180sp"
+            android:layout_height="match_parent"
+            android:paddingLeft="-20sp"
+            android:paddingTop="10sp"
+            android:scaleType="fitStart"
+            android:src="@drawable/tool_img"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="205dp"
+            android:layout_height="match_parent"
+
+            android:layout_centerInParent="true"
+            android:autoSizeMaxTextSize="18dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:gravity="center|center_vertical"
+            android:text="Это - настройки.\nОни помогут настроить\nприложение под себя."
+            android:textColor="#6a9c53"
+            android:textSize="21dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group4"
+        android:layout_height="180dp"
+        android:padding="6dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+
+        <ImageView
+
+            android:id="@+id/sos"
+            android:layout_width="180sp"
+            android:layout_height="match_parent"
+            android:paddingLeft="-20sp"
+            android:paddingTop="10sp"
+            android:scaleType="fitStart"
+            android:src="@drawable/sos_img"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="205dp"
+            android:layout_height="match_parent"
+
+            android:layout_centerInParent="true"
+            android:autoSizeMaxTextSize="18dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:gravity="center|center_vertical"
+            android:text="Это - тревожная кнопка.\nОна активирует программу помощи при тревожности."
+            android:textColor="#6a9c53"
+            android:textSize="21dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="280sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group5"
+        android:layout_height="175sp"
+        android:paddingRight="-90sp"
+
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_gravity="right">
+
+        <ImageButton
+            android:id="@+id/next2_button"
+            android:layout_width="230sp"
+            android:layout_height="170sp"
+            android:adjustViewBounds="true"
+            android:paddingRight="-60sp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/button_next" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#f0fad7"
+    android:layout_height="match_parent"
+    tools:context=".Start2">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/group1"
+        android:layout_height="150dp"
+        android:padding="7dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group2"
+        android:layout_height="135dp"
+        android:padding="5dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group3"
+        android:layout_height="200sp"
+        android:padding="6dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:autoSizeMaxTextSize="80dp"
+            android:autoSizeMinTextSize="10dp"
+            android:autoSizeStepGranularity="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/fontone"
+            android:gravity="center"
+            android:text="Добро пожаловать\nв это хуевое приложение!"
+            android:textColor="#6a9c53"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group4"
+        android:layout_height="150dp"
+        android:padding="6dp"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="265sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group1"
+        android:id="@+id/group5"
+        android:layout_height="185sp"
+        android:paddingRight="-90sp"
+
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:layout_gravity="right">
+
+        <ImageButton
+            android:id="@+id/next1_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/button_next" />
+    </RelativeLayout>
+
+</LinearLayout>
