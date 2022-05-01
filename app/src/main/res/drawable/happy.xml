@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/happy_anim"
+    android:oneshot="false">
+
+    <item
+        android:drawable="@drawable/happy1"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/happy2"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/happy3"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/happy4"
+        android:duration="700"/>
+    <item
+        android:drawable="@drawable/happy3"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/happy2"
+        android:duration="100"/>
+    <item
+        android:drawable="@drawable/happy1"
+        android:duration="100"/>
+
+
+</animation-list>
