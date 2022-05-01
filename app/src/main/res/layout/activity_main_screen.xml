@@ -24,7 +24,7 @@
             <ImageView
                 android:id="@+id/calendar_icon"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:scaleType="fitXY"
                 android:src="@drawable/cal_img" />
@@ -41,7 +41,7 @@
 
                 android:id="@+id/tools_icon"
                 android:layout_width="match_parent"
-                android:layout_height="120sp"
+                android:layout_height="110sp"
                 android:layout_weight="1"
                 android:scaleType="fitXY"
                 android:src="@drawable/tool_img"/>

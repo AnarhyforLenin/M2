@@ -68,7 +68,7 @@
             android:autoSizeTextType="uniform"
             android:gravity="center"
             android:fontFamily="@font/fontone"
-            android:text="(Никаких сложных настроек. Просто выберите, какой режим приложения вам будет комфортнее, и можно ли ему отравлять вам уведомления:з)"
+            android:text="Никаких сложных настроек. Просто выберите, какой режим приложения вам будет комфортен:з"
             android:textSize="21dp"
             android:textColor="#96B160"/>
 

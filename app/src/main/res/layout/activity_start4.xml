@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@drawable/main_background"
     android:backgroundTintMode="src_atop"
-    android:backgroundTint="#b8d480"
+    android:backgroundTint="#f0fad7"
     android:layout_height="match_parent"
 
     tools:context=".Start4">
