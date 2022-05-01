@@ -21,30 +21,33 @@
             android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/calendar_icon"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:scaleType="fitXY"
-                android:src="@drawable/cal_img" />
+                android:src="@drawable/cal_img"
+                android:backgroundTint="@android:color/transparent"/>
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/game_icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:scaleType="fitXY"
-                android:src="@drawable/game_img"/>
+                android:src="@drawable/game_img"
+                android:backgroundTint="@android:color/transparent"/>
 
-            <ImageView
+            <ImageButton
 
                 android:id="@+id/tools_icon"
                 android:layout_width="match_parent"
                 android:layout_height="110sp"
                 android:layout_weight="1"
                 android:scaleType="fitXY"
-                android:src="@drawable/tool_img"/>
+                android:src="@drawable/tool_img"
+                android:backgroundTint="@android:color/transparent"/>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
