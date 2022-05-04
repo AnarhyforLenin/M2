@@ -24,6 +24,8 @@ import com.tomer.fadingtextview.FadingTextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private View layoutEncontrarPers;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isRunning = false;
     private boolean isTapped = false;
     Timerthread timerthread;
+    Timer timer;
 
     private void setUpFadeAnimation(final TextView textView) {
         // Start from 0.1f if you desire 90% fade animation
@@ -81,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         //layoutEncontrarPers.setVisibility(View.VISIBLE);
         final SharedPreferences loginData = getSharedPreferences("loginData", MODE_PRIVATE);
@@ -102,6 +106,15 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Log.d(TAG, "onClick: ");
                     startTask();
+                    timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            Intent intentNew = new Intent(MainActivity.this, MainActivity2.class);
+                            startActivity(intentNew);
+                            finish();
+                        }
+                    }, 120000);
                     if(timerthread != null)
                     {
                         stopTask();
@@ -124,6 +137,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
+
+
+
 
     }
     private void init() {
