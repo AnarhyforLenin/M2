@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,14 +13,15 @@ import java.util.Random;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    TextView q1;
+    TextView q1,q2,right;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-
+        int var =  getIntent().getIntExtra("var",0);
+        int name =  getIntent().getIntExtra("full_name",0);
 
         int[] photos={R.drawable.f1, R.drawable.f2, R.drawable.f3, R.drawable.f4, R.drawable.f5, R.drawable.f6, R.drawable.f7, R.drawable.f8, R.drawable.f9, R.drawable.f100, R.drawable.f110, R.drawable.f120, R.drawable.f130, R.drawable.f140, R.drawable.f150};
 
@@ -49,6 +51,7 @@ public class MainActivity2 extends AppCompatActivity {
         ImageView image1 = (ImageView) findViewById(R.id.f10);
 
         q1=findViewById(R.id.q1);
+        q2=findViewById(R.id.q2);
 
         int ranq1 = (int)(Math.random()*((6-3)+1))+3;
         switch (ranq1) {
@@ -69,6 +72,25 @@ public class MainActivity2 extends AppCompatActivity {
 
         }
 
+
+        int ranq2 = (int)(Math.random()*((4-1)+1))+1;
+        switch (ranq2) {
+            case 1:
+                q2.setText("Сколько на экране синих фигур?");
+                break;
+            case 2:
+                q2.setText("Сколько на экране желтых фигур?");
+                break;
+            case 3:
+                q2.setText("Сколько на экране зеленых фигур?");
+                break;
+            case 4:
+                q2.setText("Сколько на экране красных фигур?");
+                break;
+            default:
+                break;
+
+        }
 
         Random ran1=new Random();
         int i1=ran1.nextInt(photos.length);
@@ -105,6 +127,7 @@ public class MainActivity2 extends AppCompatActivity {
         image6.setImageResource(photos[i6]);
 
         int counterA1 = 0;
+        int counterA2 = 0;
         if (mas[i1][0]==ranq1) { counterA1+=1;}
         if (mas[i2][0]==ranq1) { counterA1+=1;}
         if (mas[i3][0]==ranq1) { counterA1+=1;}
@@ -112,16 +135,25 @@ public class MainActivity2 extends AppCompatActivity {
         if (mas[i5][0]==ranq1) { counterA1+=1;}
         if (mas[i6][0]==ranq1) { counterA1+=1;}
 
+        if (mas[i1][1]==ranq2) { counterA2+=1;}
+        if (mas[i2][1]==ranq2) { counterA2+=1;}
+        if (mas[i3][1]==ranq2) { counterA2+=1;}
+        if (mas[i4][1]==ranq2) { counterA2+=1;}
+        if (mas[i5][1]==ranq2) { counterA2+=1;}
+        if (mas[i6][1]==ranq2) { counterA2+=1;}
+
+        final boolean[] Fanswer1 = {false};
+        final boolean[] Fanswer2 = {false};
 
         SeekBar seekBar = findViewById(R.id.s1);
         TextView a1 = findViewById(R.id.a1);
+        right = findViewById(R.id.right);
         int finalCounterA = counterA1;
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 a1.setText(String.valueOf(progress));
-
             }
 
             @Override
@@ -129,16 +161,66 @@ public class MainActivity2 extends AppCompatActivity {
 
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int answer1 = Integer.valueOf(a1.getText().toString());
                 if (answer1== finalCounterA) {
-                    findViewById(R.id.right).setVisibility(View.VISIBLE);
+                    Fanswer1[0] =true;
+                    if (Fanswer2[0]) {
+                        if (var ==10) {
+                            right.setText("Вы молодец,"+name+"!\nПодышим еще?");
+                        }
+                        if (var==11) {
+                            right.setText("Ты умничка,"+name+"!\nПодышим еще?");
+                        }
+                        if (var==12) {
+                            right.setText("Ты умничка, солнце!\nПодышим еще?");
+                        }
+                    }
+
                 }
-                else {findViewById(R.id.right).setVisibility(View.GONE);}
+                else {Fanswer1[0] = false;}
             }
         });
 
+        SeekBar seekBar2 = findViewById(R.id.s2);
+        TextView a2 = findViewById(R.id.a2);
+        int finalCounterA2 = counterA2;
+        seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar2, int progress, boolean fromUser) {
 
+                a2.setText(String.valueOf(progress));
+                findViewById(R.id.right).setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar2) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar2) {
+                int answer1 = Integer.valueOf(a2.getText().toString());
+                if (answer1== finalCounterA2) {
+                    Fanswer2[0] = true;
+                    if (Fanswer1[0]==true) {
+                        if (var ==10) {
+                            right.setText("Вы молодец,"+name+"!\nПодышим еще?");
+                        }
+                        if (var==11) {
+                            right.setText("Ты умничка,"+name+"!\nПодышим еще?");
+                        }
+                        if (var==12) {
+                            right.setText("Ты умничка, солнце!\nПодышим еще?");
+                        }
+                    }
+                }
+                else {Fanswer2[0] = false;}
+
+            }
+        });
     }
 }

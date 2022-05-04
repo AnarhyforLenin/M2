@@ -48,6 +48,7 @@ public class Start3 extends AppCompatActivity {
 
                 RadioButton rb = (RadioButton) group.findViewById(checkedId);
                 Intent intent5 = new Intent(Start3.this, Start5.class);
+                Intent intentMain2 = new Intent(Start3.this, MainActivity2.class);
 
                 r1.setOnClickListener(new View.OnClickListener() {
 
@@ -65,6 +66,7 @@ public class Start3 extends AppCompatActivity {
                                     String full_name = e1.getText().toString();
                                     intent5.putExtra("full_name", full_name);
                                     intent5.putExtra("var", 10);
+                                    intentMain2.putExtra("var", 10);
                                     startActivity(intent5);
                                 }
                             });
@@ -99,7 +101,9 @@ public class Start3 extends AppCompatActivity {
                                     String name = e2.getText().toString();
 
                                     intent5.putExtra("full_name",name);
+                                    intentMain2.putExtra("full_name",name);
                                     intent5.putExtra("var",11);
+                                    intentMain2.putExtra("var",11);
                                     if (he.isChecked()) {
                                         intent5.putExtra("radiochosen",1);
                                     }
@@ -135,6 +139,7 @@ public class Start3 extends AppCompatActivity {
                                 @Override
                                 public void onClick(View v) {
                                     intent5.putExtra("var",12);
+                                    intentMain2.putExtra("var",12);
                                     startActivity(intent5);
                                 }
                             });
