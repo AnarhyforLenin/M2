@@ -30,7 +30,7 @@ public class Start5 extends AppCompatActivity {
     findViewById(R.id.next34_button).setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent6 = new Intent(Start5.this, MainScreen.class);
+            Intent intent6 = new Intent(Start5.this, MainActivity2.class);
             startActivity(intent6);
         }
     });

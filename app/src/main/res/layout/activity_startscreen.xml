@@ -62,7 +62,7 @@
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/fontone"
             android:gravity="center"
-            android:text="Добро пожаловать\nв это хуевое приложение!"
+            android:text="Добро пожаловать\nв это прекрасное приложение!"
             android:textColor="#6a9c53"/>
 
 

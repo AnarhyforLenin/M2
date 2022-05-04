@@ -145,11 +145,23 @@
                 android:id="@+id/right"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text=""
+                android:text="Что\nза хрень"
                 android:textColor="@color/Green"
                 android:textSize="30dp"
                 android:fontFamily="@font/fontone"
                 android:visibility="visible"
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/right2"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="ХУЙ"
+                android:textColor="@color/Green"
+                android:textSize="30dp"
+                android:fontFamily="@font/fontone"
+                android:visibility="gone"
                 tools:ignore="MissingConstraints" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

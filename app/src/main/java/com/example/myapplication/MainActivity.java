@@ -99,45 +99,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
         TextView tv = findViewById(R.id.taimer);
-        if (isTapped == false) {
-            findViewById(R.id.buttonStart).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.buttonStart).setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    Log.d(TAG, "onClick: ");
-                    startTask();
-                    timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            Intent intentNew = new Intent(MainActivity.this, MainActivity2.class);
-                            startActivity(intentNew);
-                            finish();
-                        }
-                    }, 120000);
-                    if(timerthread != null)
-                    {
-                        stopTask();
-                        timerthread.stopAnimation();
-                        timerthread = null;
-                    }
-                    timerthread = (new Timerthread(tv));
-                    timerthread.start();
-                }
-
-            });
-            isTapped = true;
-        }
-        else {
-            findViewById(R.id.buttonStart).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: ");
+                if(timerthread != null)
+                {
                     stopTask();
                     timerthread.stopAnimation();
+                    timerthread = null;
+                    return;
                 }
-            });
-        }
+                startTask();
+                timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        Intent intentNew = new Intent(MainActivity.this, MainActivity2.class);
+                        startActivity(intentNew);
+                        finish();
+                    }
+                }, 120000);
 
+                timerthread = (new Timerthread(tv));
+                timerthread.start();
+            }
+
+        });
 
 
 
@@ -152,8 +141,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startTask() {
-        breathingAnimationThread = new BreathingAnimationThread(imgAnim, 4f, imgAnim2, 2f, 0);
+        breathingAnimationThread = new BreathingAnimationThread(imgAnim, 4f, imgAnim2, 2f, 0, this);
         breathingAnimationThread.start();
+        breathingAnimationThread.startAnimation();
         this.layoutEncontrarPers.setVisibility(View.VISIBLE);
 
     }
@@ -161,71 +151,14 @@ public class MainActivity extends AppCompatActivity {
     private void stopTask() {
         if(breathingAnimationThread != null)
         breathingAnimationThread.stopAnimation();
+        breathingAnimationThread = null;
         //this.layoutEncontrarPers.setVisibility(View.GONE);
     }
 
 
 
 
-    class BreathingAnimationThread extends Thread{
-        private ImageView imageView;
-        private float scale;
-        private ImageView imageView2;
-        private float scale2;
-        private boolean isRunning = false;
-        private int delay;
-        private boolean predefIsExtended = true;
-        private void animateTextD(ImageView imgAnim, boolean isExtending, float scale){
 
-            if(!isRunning)
-                return;
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    imgAnim.animate().scaleX(isExtending? scale : 1f).scaleY(isExtending? scale : 1f).alpha(isExtending? 0.2f : 1f).setDuration(4000).withEndAction(new Runnable() {
-                        @Override
-                        public void run() {
-
-
-                            (new BreathingAnimationThread(imgAnim,scale, !isExtending, isExtending ? 4000 : 0)).start();
-
-                            //animateTextD(imgAnim, !isExtending, scale);
-                        }
-                    });
-                }
-            });
-
-        }
-
-        public BreathingAnimationThread(ImageView imageView, float scale, ImageView imageView2, float scale2, int delay) {
-            this.imageView = imageView;
-            this.scale = scale;
-            this.imageView2 = imageView2;
-            this.scale2 = scale2;
-            this.delay = delay;
-        }
-
-        public BreathingAnimationThread(ImageView imageView, float scale, boolean predefIsExtended, int delay) {
-            this.imageView = imageView;
-            this.scale = scale;
-            this.delay = delay;
-            this.predefIsExtended = predefIsExtended;
-        }
-
-        public void stopAnimation(){
-            isRunning=false;
-        }
-        @Override
-        public void run() {
-            isRunning = true;
-            try{
-                Thread.sleep(delay);
-            } catch(InterruptedException ex){}
-            animateTextD(imageView, predefIsExtended, scale);
-            if(imageView2 != null)
-            animateTextD(imageView2, predefIsExtended, scale2);
-        }
-    }
 
     class Timerthread extends Thread{
         TextView tv;
@@ -241,7 +174,10 @@ public class MainActivity extends AppCompatActivity {
             isRunning=true;
             while (true){
                 for(final String t : seq){
-                    if(!isRunning) break;
+                    if(!isRunning) {
+
+                        break;
+                    }
                     runOnUiThread(new Runnable() { @Override public void run() { tv.setText(t); } });
                     try{Thread.sleep(1000); } catch(Exception ex){}
                 }

@@ -3,16 +3,22 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
 public class MainActivity2 extends AppCompatActivity {
 
+
+    static String name = "";
+    static int var = 0;
     TextView q1,q2,right;
 
     @Override
@@ -20,8 +26,6 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        int var =  getIntent().getIntExtra("var",0);
-        int name =  getIntent().getIntExtra("full_name",0);
 
         int[] photos={R.drawable.f1, R.drawable.f2, R.drawable.f3, R.drawable.f4, R.drawable.f5, R.drawable.f6, R.drawable.f7, R.drawable.f8, R.drawable.f9, R.drawable.f100, R.drawable.f110, R.drawable.f120, R.drawable.f130, R.drawable.f140, R.drawable.f150};
 
@@ -149,7 +153,7 @@ public class MainActivity2 extends AppCompatActivity {
         TextView a1 = findViewById(R.id.a1);
         right = findViewById(R.id.right);
         int finalCounterA = counterA1;
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        SeekBar.OnSeekBarChangeListener seekBarOnClickListener = new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
@@ -161,28 +165,30 @@ public class MainActivity2 extends AppCompatActivity {
 
             }
 
-            @SuppressLint("SetTextI18n")
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int answer1 = Integer.valueOf(a1.getText().toString());
-                if (answer1== finalCounterA) {
-                    Fanswer1[0] =true;
+                if (answer1 == finalCounterA) {
+                    Fanswer1[0] = true;
                     if (Fanswer2[0]) {
-                        if (var ==10) {
-                            right.setText("Вы молодец,"+name+"!\nПодышим еще?");
+                        if (var == 10) {
+                            rightSetText("Вы молодец," + name + "!\nПодышим еще?");
                         }
-                        if (var==11) {
-                            right.setText("Ты умничка,"+name+"!\nПодышим еще?");
+                        if (var == 11) {
+                            rightSetText("Ты умничка," + name + "!\nПодышим еще?");
                         }
-                        if (var==12) {
-                            right.setText("Ты умничка, солнце!\nПодышим еще?");
+                        if (var == 12) {
+                            rightSetText("Ты умничка, солнце! Подышим еще?");
                         }
+                        //findViewById(R.id.right2).setVisibility(View.VISIBLE);
                     }
 
                 }
-                else {Fanswer1[0] = false;}
+
+                Toast.makeText(MainActivity2.this, "dasdasdasd", Toast.LENGTH_SHORT).show();
             }
-        });
+        };
+        seekBar.setOnSeekBarChangeListener(seekBarOnClickListener);
 
         SeekBar seekBar2 = findViewById(R.id.s2);
         TextView a2 = findViewById(R.id.a2);
@@ -192,7 +198,6 @@ public class MainActivity2 extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar2, int progress, boolean fromUser) {
 
                 a2.setText(String.valueOf(progress));
-                findViewById(R.id.right).setVisibility(View.GONE);
 
             }
 
@@ -206,21 +211,26 @@ public class MainActivity2 extends AppCompatActivity {
                 int answer1 = Integer.valueOf(a2.getText().toString());
                 if (answer1== finalCounterA2) {
                     Fanswer2[0] = true;
-                    if (Fanswer1[0]==true) {
+                    if (Fanswer1[0]) {
                         if (var ==10) {
-                            right.setText("Вы молодец,"+name+"!\nПодышим еще?");
+                            rightSetText("Вы молодец,"+name+"!\nПодышим еще?");
                         }
                         if (var==11) {
-                            right.setText("Ты умничка,"+name+"!\nПодышим еще?");
+                            rightSetText("Ты умничка,"+name+"!\nПодышим еще?");
                         }
                         if (var==12) {
-                            right.setText("Ты умничка, солнце!\nПодышим еще?");
+                            rightSetText("Ты умничка, солнце!\nПодышим еще?");
                         }
+                        //findViewById(R.id.right2).setVisibility(View.VISIBLE);
                     }
                 }
-                else {Fanswer2[0] = false;}
 
             }
         });
+    }
+
+    private void rightSetText(String text) {
+        right.setText(text);
+        right.postInvalidate();
     }
 }
