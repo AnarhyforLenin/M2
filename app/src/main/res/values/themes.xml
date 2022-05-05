@@ -20,6 +20,20 @@
         <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
         <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
+        <item name="android:alertDialogStyle">@style/CustomDialogTheme</item>
+    </style>
+
+    <style name="CustomDialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:bottomBright">#E91E63</item>
+        <item name="android:bottomDark">#CDDC39</item>
+        <item name="android:bottomMedium">#00BCD4</item>
+        <item name="android:centerBright">#80FF3B</item>
+        <item name="android:centerDark">@color/white</item>
+        <item name="android:centerMedium">@color/white</item>
+        <item name="android:fullBright">@color/Green</item>
+        <item name="android:fullDark">@color/HappyGreen</item>
+        <item name="android:topBright">@color/BrightGreen</item>
+        <item name="android:topDark">@color/Darkgreen</item>
     </style>
 
 </resources>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#97ea7c"
+    android:background="#adeb99"
     android:layout_height="match_parent"
     tools:context=".Start2">
 
@@ -24,6 +24,14 @@
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/circ_img2" />
 
+        <ImageView
+            android:id="@+id/Anim3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/circ_img3" />
+
 
         <TextView
             android:id="@+id/taimer"
@@ -39,7 +47,7 @@
             android:layout_marginBottom="228dp"
             android:fontFamily="@font/fontone"
             android:gravity="center"
-            android:textColor="@color/HappyGreen"
+            android:textColor="#97ea7c"
             android:textSize="150sp" />
 
 

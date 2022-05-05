@@ -29,7 +29,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private View layoutEncontrarPers;
-    private ImageView imgAnim, imgAnim2;
+    private ImageView imgAnim, imgAnim2, imgAnim3;
     private Handler handlerAnimationCIMG;
     private TextView textView;
     private TextView timerTextView;
@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     imgAnim.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(1000);
                     imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(1000);
+                    imgAnim3.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(1000);
                     stopTask();
                 }
                 Handler handler = new Handler();
@@ -120,8 +121,9 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         this.handlerAnimationCIMG = new Handler();
         this.layoutEncontrarPers = findViewById(R.id.layoutPers);
-        this.imgAnim = findViewById(R.id.Anim2);
+        this.imgAnim = findViewById(R.id.Anim3);
         this.imgAnim2 = findViewById(R.id.Anim1);
+        this.imgAnim3 = findViewById(R.id.Anim2);
 
     }
 
@@ -166,8 +168,9 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                imgAnim.animate().scaleX(4f).scaleY(4f).alpha(0f).setDuration(4000);
-                                imgAnim2.animate().scaleX(2f).scaleY(2f).alpha(1f).setDuration(4000);
+                                imgAnim.animate().scaleX(1.5f).scaleY(1.5f).alpha(1f).setDuration(4000);
+                                imgAnim2.animate().scaleX(2f).scaleY(2f).alpha(0.5f).setDuration(4000);
+                                imgAnim3.animate().scaleX(3f).scaleY(3f).alpha(0.5f).setDuration(4000);
                                 firstTimer[0] +=1;
                             }
                         });
@@ -178,8 +181,9 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                imgAnim.animate().scaleX(4f).scaleY(4f).alpha(1f).setDuration(4000);
-                                imgAnim2.animate().scaleX(2f).scaleY(2f).alpha(1f).setDuration(4000);
+                                imgAnim.animate().scaleX(1.5f).scaleY(1.5f).alpha(1f).setDuration(4000);
+                                imgAnim2.animate().scaleX(2f).scaleY(2f).alpha(0.5f).setDuration(4000);
+                                imgAnim3.animate().scaleX(3f).scaleY(3f).alpha(0.5f).setDuration(4000);
                                 firstTimer[0] +=1;
                             }
                         });
@@ -189,8 +193,9 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                imgAnim.animate().scaleX(1f).scaleY(1f).alpha(0f).setDuration(4000);
-                                imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(4000);
+                                imgAnim.animate().scaleX(1.5f).scaleY(1.5f).alpha(0f).setDuration(4000);
+                                imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(0f).setDuration(4000);
+                                imgAnim3.animate().scaleX(1f).scaleY(1f).alpha(0.5f).setDuration(4000);
                                 firstTimer[0]+=1;
                             }
                         });
@@ -200,8 +205,9 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                imgAnim.animate().scaleX(1f).scaleY(1f).alpha(0f).setDuration(4000);
-                                imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(4000);
+                                imgAnim.animate().scaleX(1.5f).scaleY(1.5f).alpha(1f).setDuration(4000);
+                                imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(0.5f).setDuration(4000);
+                                imgAnim3.animate().scaleX(1f).scaleY(1f).alpha(0.5f).setDuration(4000);
                                 firstTimer[0]=1;
                             }
                         });
