@@ -11,7 +11,7 @@
         android:id="@+id/layoutPers"
         layout="@layout/layout_buscar_personas" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +20,11 @@
         android:layout_marginEnd="160dp"
         android:layout_marginBottom="61dp"
         android:gravity="center"
-        android:text="Blya" />
+        android:background="@drawable/buttonbreath"
+        android:text="Начать"
+        android:fontFamily="@font/fontone"
+        android:textSize="18dp"
+        android:textColor="@color/Darkgreen"/>
 
     <TextView
         android:id="@+id/tip"
