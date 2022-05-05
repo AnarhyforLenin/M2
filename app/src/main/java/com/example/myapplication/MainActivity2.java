@@ -221,7 +221,7 @@ public class MainActivity2 extends AppCompatActivity {
                         if (var==12) {
                             rightSetText("Ты умничка, солнце!\nПодышим еще?");
                         }
-                        //findViewById(R.id.right2).setVisibility(View.VISIBLE);
+
                     }
                 }
 

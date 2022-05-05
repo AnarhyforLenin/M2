@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -28,6 +29,15 @@ public class MainScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
         sos = findViewById(R.id.next34_button);
+        final SharedPreferences loginData = getSharedPreferences("loginData", MODE_PRIVATE);
+        boolean firstStart = loginData.getBoolean("firstStart", true);
+        if(firstStart) {
+            loginData.edit().putBoolean("firstStart", false).commit();
+
+            Intent intent = new Intent(this,Startscreen.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
         karambola = (ImageButton)findViewById(R.id.karambola);
         karambola.setBackgroundResource(R.drawable.happy);
         animation = (AnimationDrawable) karambola.getBackground();

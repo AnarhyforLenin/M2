@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imgAnim, imgAnim2;
     private Handler handlerAnimationCIMG;
     private TextView textView;
+    private TextView timerTextView;
     private FadingTextView fadingTextView;
     private BreathingAnimationThread breathingAnimationThread;
     private boolean isRunning = false;
@@ -40,11 +41,9 @@ public class MainActivity extends AppCompatActivity {
     Timer timer;
 
     private void setUpFadeAnimation(final TextView textView) {
-        // Start from 0.1f if you desire 90% fade animation
         final Animation fadeIn = new AlphaAnimation(0.0f, 1.0f);
         fadeIn.setDuration(0);
         fadeIn.setStartOffset(0);
-        // End to 0.1f if you desire 90% fade animation
         final Animation fadeOut = new AlphaAnimation(1.0f, 0.0f);
         fadeOut.setDuration(0);
         fadeOut.setStartOffset(0);
@@ -67,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         fadeOut.setAnimationListener(new Animation.AnimationListener(){
             @Override
             public void onAnimationEnd(Animation arg0) {
-                // start fadeIn when fadeOut ends (repeat)
                 textView.startAnimation(fadeIn);
             }
 
@@ -86,44 +84,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        //layoutEncontrarPers.setVisibility(View.VISIBLE);
-        final SharedPreferences loginData = getSharedPreferences("loginData", MODE_PRIVATE);
-        boolean firstStart = loginData.getBoolean("firstStart", true);
-        if(firstStart) {
-            loginData.edit().putBoolean("firstStart", false).commit();
-
-            Intent intent = new Intent(this,Startscreen.class);
-            startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        }
         setContentView(R.layout.activity_main);
         init();
-        TextView tv = findViewById(R.id.taimer);
+        timerTextView = findViewById(R.id.taimer);
         findViewById(R.id.buttonStart).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: ");
-                if(timerthread != null)
-                {
-                    stopTask();
-                    timerthread.stopAnimation();
-                    timerthread = null;
-                    return;
+                if(timerthread == null) {
+                    startTask();
                 }
-                startTask();
-                timer = new Timer();
-                timer.schedule(new TimerTask() {
+                else {
+                    imgAnim.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(1000);
+                    imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(1000);
+                    stopTask();
+                }
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intentNew = new Intent(MainActivity.this, MainActivity2.class);
-                        startActivity(intentNew);
+                        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                        startActivity(intent);
                         finish();
                     }
-                }, 120000);
-
-                timerthread = (new Timerthread(tv));
-                timerthread.start();
+                }, 60000);
             }
 
         });
@@ -135,24 +120,21 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         this.handlerAnimationCIMG = new Handler();
         this.layoutEncontrarPers = findViewById(R.id.layoutPers);
-        this.imgAnim = findViewById(R.id.Anim1);
-        this.imgAnim2 = findViewById(R.id.Anim2);
+        this.imgAnim = findViewById(R.id.Anim2);
+        this.imgAnim2 = findViewById(R.id.Anim1);
 
     }
 
     private void startTask() {
-        breathingAnimationThread = new BreathingAnimationThread(imgAnim, 4f, imgAnim2, 2f, 0, this);
-        breathingAnimationThread.start();
-        breathingAnimationThread.startAnimation();
-        this.layoutEncontrarPers.setVisibility(View.VISIBLE);
-
+        timerthread = new Timerthread(timerTextView);
+        timerthread.start();
     }
 
     private void stopTask() {
-        if(breathingAnimationThread != null)
-        breathingAnimationThread.stopAnimation();
-        breathingAnimationThread = null;
-        //this.layoutEncontrarPers.setVisibility(View.GONE);
+        if(timerthread != null) {
+            timerthread.stopAnimation();
+            timerthread = null;
+        }
     }
 
 
@@ -171,14 +153,61 @@ public class MainActivity extends AppCompatActivity {
             isRunning = false;
         }
         public void run(){
+            final int[] firstTimer = {1};
             isRunning=true;
             while (true){
                 for(final String t : seq){
                     if(!isRunning) {
+                        firstTimer[0]=1;
 
                         break;
                     }
-                    runOnUiThread(new Runnable() { @Override public void run() { tv.setText(t); } });
+                    if(t.equals("4")&& firstTimer[0] ==1) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                imgAnim.animate().scaleX(4f).scaleY(4f).alpha(0f).setDuration(4000);
+                                imgAnim2.animate().scaleX(2f).scaleY(2f).alpha(1f).setDuration(4000);
+                                firstTimer[0] +=1;
+                            }
+                        });
+
+                    }
+
+                    if(t.equals("4")&& firstTimer[0] ==2) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                imgAnim.animate().scaleX(4f).scaleY(4f).alpha(1f).setDuration(4000);
+                                imgAnim2.animate().scaleX(2f).scaleY(2f).alpha(1f).setDuration(4000);
+                                firstTimer[0] +=1;
+                            }
+                        });
+
+                    }
+                    if(t.equals("4")&& firstTimer[0] ==3) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                imgAnim.animate().scaleX(1f).scaleY(1f).alpha(0f).setDuration(4000);
+                                imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(4000);
+                                firstTimer[0]+=1;
+                            }
+                        });
+
+                    }
+                    if(t.equals("4")&& firstTimer[0] ==4) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                imgAnim.animate().scaleX(1f).scaleY(1f).alpha(0f).setDuration(4000);
+                                imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(4000);
+                                firstTimer[0]=1;
+                            }
+                        });
+                    }
+
+                    tvSetText(t, tv);
                     try{Thread.sleep(1000); } catch(Exception ex){}
                 }
 
@@ -186,6 +215,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    private void tvSetText(String text, TextView tv) {
+        runOnUiThread(new Runnable() { @Override public void run() { tv.setText(text); } });
     }
 
 
