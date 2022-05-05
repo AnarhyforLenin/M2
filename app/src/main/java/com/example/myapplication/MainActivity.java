@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imgAnim, imgAnim2, imgAnim3;
     private Handler handlerAnimationCIMG;
     private TextView textView;
+    private TextView tip;
     private TextView timerTextView;
     private FadingTextView fadingTextView;
     private BreathingAnimationThread breathingAnimationThread;
@@ -83,22 +84,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
         timerTextView = findViewById(R.id.taimer);
+
         findViewById(R.id.buttonStart).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: ");
+
                 if(timerthread == null) {
                     startTask();
+
+
                 }
                 else {
                     imgAnim.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(1000);
                     imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(1000);
                     imgAnim3.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(1000);
+                    //tip.setVisibility(View.GONE);
                     stopTask();
                 }
                 Handler handler = new Handler();
@@ -124,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
         this.imgAnim = findViewById(R.id.Anim3);
         this.imgAnim2 = findViewById(R.id.Anim1);
         this.imgAnim3 = findViewById(R.id.Anim2);
+        this.tip=findViewById(R.id.tip);
 
     }
 
@@ -146,6 +155,8 @@ public class MainActivity extends AppCompatActivity {
 
     class Timerthread extends Thread{
         TextView tv;
+        int var = MainActivity2.var;
+        String name = MainActivity2.name;
         boolean isRunning=false;
         String[] seq = {"4","3","2","1"};
         Timerthread(TextView tv){
@@ -153,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
         }
         public void stopAnimation() {
             isRunning = false;
+            tip.setVisibility(View.GONE);
         }
         public void run(){
             final int[] firstTimer = {1};
@@ -168,9 +180,16 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                tip.setVisibility(View.VISIBLE);
                                 imgAnim.animate().scaleX(1.5f).scaleY(1.5f).alpha(1f).setDuration(4000);
                                 imgAnim2.animate().scaleX(2f).scaleY(2f).alpha(0.5f).setDuration(4000);
                                 imgAnim3.animate().scaleX(3f).scaleY(3f).alpha(0.5f).setDuration(4000);
+                                if (var ==10) {tip.setText(name+",сделайте вдох");}
+                                if (var ==11) {tip.setText(name+",сделай вдох");}
+                                if (var ==12) {
+                                    tip.setText("Солнце, сделай глубокий вдох");
+                                }
+
                                 firstTimer[0] +=1;
                             }
                         });
@@ -184,6 +203,9 @@ public class MainActivity extends AppCompatActivity {
                                 imgAnim.animate().scaleX(1.5f).scaleY(1.5f).alpha(1f).setDuration(4000);
                                 imgAnim2.animate().scaleX(2f).scaleY(2f).alpha(0.5f).setDuration(4000);
                                 imgAnim3.animate().scaleX(3f).scaleY(3f).alpha(0.5f).setDuration(4000);
+                                if (var ==10) {tip.setText(name+",задержите дыхание");}
+                                if (var ==11) {tip.setText(name+",задержи дыхание");}
+                                if (var ==12) {tip.setText("Солнце, задержи дыхание");}
                                 firstTimer[0] +=1;
                             }
                         });
@@ -193,9 +215,12 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                imgAnim.animate().scaleX(1.5f).scaleY(1.5f).alpha(0f).setDuration(4000);
+                                imgAnim.animate().scaleX(1f).scaleY(1f).alpha(0f).setDuration(4000);
                                 imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(0f).setDuration(4000);
-                                imgAnim3.animate().scaleX(1f).scaleY(1f).alpha(0.5f).setDuration(4000);
+                                imgAnim3.animate().scaleX(1f).scaleY(1f).alpha(0f).setDuration(4000);
+                                if (var ==10) {tip.setText(name+",сделайте выдох");}
+                                if (var ==11) {tip.setText(name+",сделай выдох");}
+                                if (var ==12) {tip.setText("Солнце, сделай выдох");}
                                 firstTimer[0]+=1;
                             }
                         });
@@ -205,9 +230,12 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                imgAnim.animate().scaleX(1.5f).scaleY(1.5f).alpha(1f).setDuration(4000);
-                                imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(0.5f).setDuration(4000);
-                                imgAnim3.animate().scaleX(1f).scaleY(1f).alpha(0.5f).setDuration(4000);
+                                imgAnim.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(4000);
+                                imgAnim2.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(4000);
+                                imgAnim3.animate().scaleX(1f).scaleY(1f).alpha(1f).setDuration(4000);
+                                if (var ==10) {tip.setText(name+",задержите дыхание");}
+                                if (var ==11) {tip.setText(name+",задержи дыхание");}
+                                if (var ==12) {tip.setText("Солнце, задержи дыхание");}
                                 firstTimer[0]=1;
                             }
                         });

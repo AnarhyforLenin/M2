@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <include
         android:id="@+id/layoutPers"
         layout="@layout/layout_buscar_personas" />
@@ -20,5 +21,16 @@
         android:layout_marginBottom="61dp"
         android:gravity="center"
         android:text="Blya" />
+
+    <TextView
+        android:id="@+id/tip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttonStart"
+        android:fontFamily="@font/fontone"
+        android:gravity="top|center_horizontal"
+        android:text=""
+        android:textColor="#f0fad7"
+        android:textSize="30dp" />
 
 </RelativeLayout>
