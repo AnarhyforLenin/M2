@@ -8,7 +8,13 @@ import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+
+import java.sql.Time;
 import java.text.BreakIterator;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class Tamagochi extends AppCompatActivity {
 
@@ -25,6 +31,16 @@ public class Tamagochi extends AppCompatActivity {
         TextView textHappy = (TextView)findViewById(R.id.happyness);
         ProgressBar progressHappy = (ProgressBar)findViewById(R.id.vertical_progressbar3);
 
+        //String currentTimeString = java.text.DateFormat.getTimeInstance().format(new Date());
+        //Date currentTime = Calendar.getInstance().getTime();
+        TextView textView = findViewById(R.id.test);
+        TimeZone tz = TimeZone.getTimeZone("GMT+03");
+        Calendar c = Calendar.getInstance(tz);
+        String time2 = String.format("%02d" , c.get(Calendar.HOUR_OF_DAY))+":"+String.format("%02d" , c.get(Calendar.MINUTE));
+        textView.setText(time2);
+        //if (ttt<5) {
+         //   textView.setText("ddddd");
+        //}
         new CountDownTimer(100000, 1000) {
 
             public void onTick(long millisUntilFinished) {
