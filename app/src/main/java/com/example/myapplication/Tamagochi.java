@@ -1,19 +1,13 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.Time;
-import java.text.BreakIterator;
-import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.TimeZone;
 
 public class Tamagochi extends AppCompatActivity {
@@ -41,7 +35,7 @@ public class Tamagochi extends AppCompatActivity {
         //if (ttt<5) {
          //   textView.setText("ddddd");
         //}
-        new CountDownTimer(100000, 1000) {
+        new CountDownTimer(200000, 2000) {
 
             public void onTick(long millisUntilFinished) {
                 textHealth.setText(checkDigit(time[0]));

@@ -1,3 +1,4 @@
+
 package com.example.myapplication;
 
 
@@ -49,6 +50,7 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
         super.onCreate(savedInstanceState);
         preferences = getSharedPreferences("com.example.protoitpe", Context.MODE_PRIVATE);
         setContentView(R.layout.activity_calendar);
+
         Bundle args = new Bundle();
         java.util.Calendar cal = java.util.Calendar.getInstance();
         args.putInt(CaldroidFragment.MONTH, cal.get(java.util.Calendar.MONTH) + 1);
