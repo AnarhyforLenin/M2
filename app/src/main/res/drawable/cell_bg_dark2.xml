@@ -3,12 +3,12 @@
     xmlns:caldroid="http://schemas.android.com/apk/res-auto">
 
     <item android:drawable="@drawable/red_border_gray_bg2" android:state_pressed="false" caldroid:state_date_disabled="true" caldroid:state_date_today="true"/>
-    <item android:drawable="@color/caldroid_333" android:state_pressed="false" caldroid:state_date_prev_next_month="true"/>
+    <item android:drawable="@color/Yellowdark" android:state_pressed="false" caldroid:state_date_prev_next_month="true"/>
     <item android:drawable="@drawable/disabled_cell_dark2" caldroid:state_date_disabled="true"/>
-    <item android:drawable="@color/HappyGreen" android:state_pressed="false" caldroid:state_date_selected="true"/>
+    <item android:drawable="@color/Yellowdark" android:state_pressed="false" caldroid:state_date_selected="true"/>
     <item android:drawable="@drawable/red_border_dark2" android:state_pressed="false" caldroid:state_date_today="true"/>
-    <item android:drawable="@color/HappyGreen" android:state_pressed="true"/>
-    <item android:drawable="@color/Background" android:state_pressed="false"/>
+    <item android:drawable="@color/Yellowdark" android:state_pressed="true"/>
+    <item android:drawable="@color/YellowBright" android:state_pressed="false"/>
 
 
 </selector>

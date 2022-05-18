@@ -30,6 +30,7 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
     private ArrayList<ImageButton> buttons = new ArrayList<>();
     private ArrayList<ColorDrawable> colors = new ArrayList<>();
     private ArrayList<Drawable> frames = new ArrayList<>();
+    private ArrayList<Drawable> pills = new ArrayList<>();
     private HashMap<Date, ColorDrawable> markedDates = new HashMap<>();
     private final CaldroidFragment caldroidFragment = new CaldroidFragment();
     private Date selectedDate = new Date();
@@ -62,16 +63,17 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
         fragmentTransaction.replace(R.id.ConstraintLayout, caldroidFragment);
         fragmentTransaction.commit();
 
-        colors = new ArrayList<>(Arrays.asList(
-                new ColorDrawable(getResources().getColor(R.color.light_blue, null)),
-                new ColorDrawable(getResources().getColor(R.color.green, null)),
-                new ColorDrawable(getResources().getColor(R.color.pink, null)),
-                new ColorDrawable(getResources().getColor(R.color.yellow, null))
+        pills = new ArrayList<>(Arrays.asList(
+                ResourcesCompat.getDrawable(getResources(), R.drawable.blue_select_frame, null),
+                ResourcesCompat.getDrawable(getResources(), R.drawable.pill1, null),
+                ResourcesCompat.getDrawable(getResources(), R.drawable.pink_select_frame, null),
+                ResourcesCompat.getDrawable(getResources(), R.drawable.yellow_select_frame, null),
+                ResourcesCompat.getDrawable(getResources(), R.drawable.blue_frame, null)
         ));
 
         frames = new ArrayList<>(Arrays.asList(
                 ResourcesCompat.getDrawable(getResources(), R.drawable.blue_select_frame, null),
-                ResourcesCompat.getDrawable(getResources(), R.drawable.green_select_frame, null),
+                ResourcesCompat.getDrawable(getResources(), R.drawable.pill1_selected, null),
                 ResourcesCompat.getDrawable(getResources(), R.drawable.pink_select_frame, null),
                 ResourcesCompat.getDrawable(getResources(), R.drawable.yellow_select_frame, null),
                 ResourcesCompat.getDrawable(getResources(), R.drawable.blue_frame, null)
