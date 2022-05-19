@@ -12,6 +12,11 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/arrow.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/blue.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/blue_active.xml" value="0.1" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/blue_pic1_frame_layer.xml" value="0.156" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/blue_pic2_frame_layer.xml" value="0.156" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/blue_pic3_frame_layer.xml" value="0.156" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/blue_pic4_frame_layer.xml" value="0.156" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/blue_pic5_frame_layer.xml" value="0.156" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/border_shadow.xml" value="0.166" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/button_tap.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/buttonbreath.xml" value="0.156" />
@@ -36,13 +41,14 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/progress_bar_vertical2.xml" value="0.23" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/progress_bar_vertical3.xml" value="0.23" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/red_border_dark2.xml" value="0.156" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/red_border_dark3.xml" value="0.156" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/red_border_gray_bg2.xml" value="0.156" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/seekbar_style.xml" value="0.166" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/thumb.xml" value="0.166" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/track.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/yellow.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/yellow_active.xml" value="0.1" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_calendar.xml" value="0.1005014625992478" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_calendar.xml" value="0.264" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_main2.xml" value="0.264" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_main_screen.xml" value="0.264" />

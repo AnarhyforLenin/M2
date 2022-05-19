@@ -50,7 +50,7 @@
     </style>
 
     <style name="CaldroidDefaultDarkGridView" parent="CaldroidDefaultGridView">
-        <item name="android:background">@color/Background</item>
+        <item name="android:background">@color/YellowBright</item>
     </style>
 
     <style name="CaldroidDefaultDarkCell" parent="CaldroidDefaultCell">

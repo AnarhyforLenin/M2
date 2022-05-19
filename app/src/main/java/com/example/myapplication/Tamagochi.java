@@ -4,7 +4,6 @@ import android.content.ClipData;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.DragEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -65,46 +64,40 @@ public class Tamagochi extends AppCompatActivity {
         dish = findViewById(R.id.yellow);
         kar = findViewById(R.id.karambola);
         karIm = findViewById(R.id.karambolaIm);
-        dish.setOnTouchListener(new ChoiceTouchListener());
-        dish.setOnDragListener(new ChoiceDragListener());
+        dish.setOnLongClickListener(longClickListener);
+        karIm.setOnDragListener(dragListener);
+
     }
 
-    private final class ChoiceTouchListener implements View.OnTouchListener {
-
-
+    View.OnLongClickListener longClickListener = new View.OnLongClickListener() {
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            if (event.getAction() == MotionEvent.ACTION_DOWN && ((ImageView)v).getDrawable()!=null) {
-                ClipData data = ClipData.newPlainText("","");
-                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-                v.startDrag(data, shadowBuilder,v, 0);
-                return true;
-            }
-            else {return false;}
+        public boolean onLongClick(View v) {
+            ClipData data = ClipData.newPlainText("","");
+            View.DragShadowBuilder myshadowBuilder = new View.DragShadowBuilder(v);
+            v.startDrag(data, myshadowBuilder,v,0);
+            return false;
         }
-    }
-    private class  ChoiceDragListener implements View.OnDragListener {
+    };
+
+    View.OnDragListener dragListener = new View.OnDragListener(){
 
         @Override
         public boolean onDrag(View v, DragEvent event) {
-            switch(event.getAction()) {
-                case DragEvent.ACTION_DRAG_STARTED:
-                    break;
+            int dragEvent = event.getAction();
+            switch (dragEvent) {
                 case DragEvent.ACTION_DRAG_ENTERED:
+                    final View view = (View) event.getLocalState();
+                    if (view.getId()== R.id.yellow) {
+                        TextView test2 = findViewById(R.id.test2);
+                        test2.setText("ГОВНО ЗАЛУПА ПЕНИС ХЕР");
+                    }
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
                     break;
                 case DragEvent.ACTION_DROP:
-                    ImageView view = (ImageView) event.getLocalState();
-                    //((ImageView)v).setImageDrawable(getResources().getDrawable(R.drawable.bowl));
-                    ((ImageView)v).setImageDrawable(null);
-
-                    break;
-                case DragEvent.ACTION_DRAG_ENDED:
                     break;
             }
-            return false;
+            return true;
         }
-    }
-
+    };
 }
