@@ -1,10 +1,13 @@
 package com.example.myapplication;
 
 import android.content.ClipData;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.DragEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -16,21 +19,26 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 public class Tamagochi extends AppCompatActivity {
-    ImageView dish, karIm,bawl;
+    ImageView dish, bawl,karIm,bed;
     ImageButton kar;
-
+    AnimationDrawable eatAnim, sleepAnim,sleepStaticAnim, happyAnim;
+    Button sleep_button;
+    final int[] time = {100,100,100};
+    boolean isTappedSleep = false;
+    CountDownTimer healthT, healthT2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tamagochi);
-        final int[] time = {100};
+
         TextView textHealth = (TextView)findViewById(R.id.health);
         ProgressBar progressHealth = (ProgressBar)findViewById(R.id.vertical_progressbar1);
         TextView textEat = (TextView)findViewById(R.id.eat);
         ProgressBar progressEat = (ProgressBar)findViewById(R.id.vertical_progressbar2);
         TextView textHappy = (TextView)findViewById(R.id.happyness);
         ProgressBar progressHappy = (ProgressBar)findViewById(R.id.vertical_progressbar3);
+
 
         TextView textView = findViewById(R.id.test);
         TimeZone tz = TimeZone.getTimeZone("GMT+03");
@@ -40,12 +48,14 @@ public class Tamagochi extends AppCompatActivity {
         new CountDownTimer(200000, 2000) {
 
             public void onTick(long millisUntilFinished) {
-                textHealth.setText(checkDigit(time[0]));
-                progressHealth.setProgress(time[0]);
+                time[0]=checkProgress(time[0]);
                 textEat.setText(checkDigit(time[0]));
-                progressEat.setProgress(time[0]);
-                textHappy.setText(checkDigit(time[0]));
-                progressHappy.setProgress(time[0]);
+                progressEat.setProgress(checkProgress(time[0]));
+                time[1]=checkProgress(time[1]);
+                textHappy.setText(checkDigit(time[1]));
+                progressHappy.setProgress(checkProgress(time[1]));
+
+                time[1]--;
                 time[0]--;
             }
 
@@ -54,18 +64,127 @@ public class Tamagochi extends AppCompatActivity {
             }
 
             public void onFinish() {
-                textHealth.setText("0");
-                textEat.setText("0");
-                textHappy.setText("0");
+
+            }
+
+        }.start();
+        healthT = new CountDownTimer(500000, 5000) {
+
+            public void onTick(long millisUntilFinished) {
+                time[2]=checkProgress(time[2]);
+                textHealth.setText(checkDigit(time[2]));
+                progressHealth.setProgress(checkProgress(time[2]));
+
+                time[2]--;
+
+            }
+
+            private String checkDigit(int time) {
+                return String.valueOf(time);
+            }
+
+            public void onFinish() {
+
             }
 
         }.start();
 
         dish = findViewById(R.id.yellow);
         kar = findViewById(R.id.karambola);
-        karIm = findViewById(R.id.karambolaIm);
         dish.setOnLongClickListener(longClickListener);
-        karIm.setOnDragListener(dragListener);
+        kar.setOnDragListener(dragListener);
+        kar.setBackgroundResource(R.drawable.eat);
+        eatAnim = (AnimationDrawable) kar.getBackground();
+        bed = findViewById(R.id.bed);
+
+        karIm = findViewById(R.id.karambolaIm);
+        karIm.setBackgroundResource(R.drawable.sleep);
+        sleepAnim = (AnimationDrawable) karIm.getBackground();
+        sleep_button = findViewById(R.id.button_sleep);
+
+
+        kar.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                kar.setBackgroundResource(R.drawable.happy_newsize);
+                happyAnim = (AnimationDrawable) kar.getBackground();
+                happyAnim.start();
+                Handler handler3 = new Handler();
+                handler3.postDelayed(new Runnable() {
+                    public void run() {
+                        happyAnim.stop();
+                        kar.setBackgroundResource(R.drawable.eat);
+                        eatAnim = (AnimationDrawable) kar.getBackground();
+                        kar.setOnDragListener(dragListener);
+                        time[0]+=10;
+
+                    }
+                }, 2000);
+                return false;
+            }
+        });
+
+        sleep_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTappedSleep == false) {
+                    karIm.setVisibility(View.VISIBLE);
+                    kar.setVisibility(View.GONE);
+                    bed.setVisibility(View.GONE);
+                    sleepAnim.start();
+                    Handler handler2 = new Handler();
+                    handler2.postDelayed(new Runnable() {
+                        public void run() {
+
+                            sleepAnim.stop();
+                            karIm.setBackgroundResource(R.drawable.sleep_static);
+                            sleepStaticAnim = (AnimationDrawable) karIm.getBackground();
+                            sleepStaticAnim.start();
+                            healthT.cancel();
+
+                            healthT2 = new CountDownTimer(500000, 5000) {
+
+                                public void onTick(long millisUntilFinished) {
+                                    time[2] = checkProgress(time[2]);
+                                    textHealth.setText(checkDigit(time[2]));
+                                    progressHealth.setProgress(checkProgress(time[2]));
+
+                                    time[2]++;
+
+                                }
+
+                                private String checkDigit(int time) {
+                                    return String.valueOf(time);
+                                }
+
+                                public void onFinish() {
+
+                                }
+
+                            }.start();
+                        }
+                    }, 4500);
+                    isTappedSleep =true;
+
+                }
+                else {
+                    sleepStaticAnim.stop();
+                    karIm.setVisibility(View.GONE);
+                    kar.setVisibility(View.VISIBLE);
+                    bed.setVisibility(View.VISIBLE);
+                    healthT2.cancel();
+                    healthT.start();
+                    isTappedSleep = false;
+
+
+                }
+
+
+            }
+
+        });
+
+
 
     }
 
@@ -88,8 +207,16 @@ public class Tamagochi extends AppCompatActivity {
                 case DragEvent.ACTION_DRAG_ENTERED:
                     final View view = (View) event.getLocalState();
                     if (view.getId()== R.id.yellow) {
-                        TextView test2 = findViewById(R.id.test2);
-                        test2.setText("ГОВНО ЗАЛУПА ПЕНИС ХЕР");
+                        eatAnim.start();
+                        time[1]+=20;
+                        checkProgress(time[1]);
+
+                        Handler handler1 = new Handler();
+                        handler1.postDelayed(new Runnable() {
+                            public void run() {
+                                eatAnim.stop();
+                            }
+                        }, 2000);
                     }
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
@@ -100,4 +227,15 @@ public class Tamagochi extends AppCompatActivity {
             return true;
         }
     };
+
+
+    public int checkProgress(int progress) {
+        if (progress>100){
+            progress=100;
+        }
+        if (progress<=0) {
+            progress=0;
+        }
+        return progress;
+    }
 }

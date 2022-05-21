@@ -29,10 +29,12 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/custom_seekbar.xml" value="0.166" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/custom_thumb.xml" value="0.166" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/disabled_cell_dark2.xml" value="0.156" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/eat.xml" value="0.156" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/em_button.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/green.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/green_active.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/happy.xml" value="0.156" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/happy_newsize.xml" value="0.114" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/light_blue.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/pink.xml" value="0.1" />
@@ -44,6 +46,8 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/red_border_dark3.xml" value="0.156" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/red_border_gray_bg2.xml" value="0.156" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/seekbar_style.xml" value="0.166" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/sleep.xml" value="0.156" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/sleep_static.xml" value="0.156" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/thumb.xml" value="0.166" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/track.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/yellow.xml" value="0.1" />

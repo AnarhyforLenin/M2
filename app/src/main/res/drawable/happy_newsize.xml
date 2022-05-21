@@ -5,27 +5,27 @@
     android:oneshot="true">
 
     <item
-        android:drawable="@drawable/happy1"
+        android:drawable="@drawable/happy1_new"
         android:duration="100"
         />
     <item
-        android:drawable="@drawable/happy2"
+        android:drawable="@drawable/happy2_new"
         android:duration="100">
     </item>
     <item
-        android:drawable="@drawable/happy3"
+        android:drawable="@drawable/happy3_new"
         android:duration="100"/>
     <item
-        android:drawable="@drawable/happy4"
+        android:drawable="@drawable/happy4_new"
         android:duration="700"/>
     <item
-        android:drawable="@drawable/happy3"
+        android:drawable="@drawable/happy3_new"
         android:duration="100"/>
     <item
-        android:drawable="@drawable/happy2"
+        android:drawable="@drawable/happy2_new"
         android:duration="100"/>
     <item
-        android:drawable="@drawable/happy1"
+        android:drawable="@drawable/happy1_new"
         android:duration="100"/>
 
 
