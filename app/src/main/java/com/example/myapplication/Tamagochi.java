@@ -42,7 +42,8 @@ public class Tamagochi extends AppCompatActivity {
         TimeZone tz = TimeZone.getTimeZone("GMT+03");
         java.util.Calendar c = java.util.Calendar.getInstance(tz);
         String time2 = String.format("%02d" , c.get(java.util.Calendar.HOUR_OF_DAY));
-
+        kar = findViewById(R.id.karambola);
+        kar.setBackgroundResource(R.drawable.eat);
         dark = findViewById(R.id.dark);
         if (Integer.parseInt(time2) > 20){
             window.setBackgroundResource(R.drawable.w1_night);
@@ -52,19 +53,7 @@ public class Tamagochi extends AppCompatActivity {
             dark.setVisibility(View.INVISIBLE);
             window.setBackgroundResource(R.drawable.w1_day);
         }
-        int total = IntStream.of(time).sum();
-        if (total<180) {
-            kar.setBackgroundResource(R.drawable.sad1);
-            if (total<90) {
-                kar.setBackgroundResource(R.drawable.sad2);
-                if (total<30) {
-                    kar.setBackgroundResource(R.drawable.sad3);
-                }
 
-            }
-
-        }
-        else {kar.setBackgroundResource(R.drawable.happy1);}
 
         new CountDownTimer(200000, 2000) {
 
@@ -78,6 +67,12 @@ public class Tamagochi extends AppCompatActivity {
 
                 time[1]--;
                 time[0]--;
+                Handler handler6 = new Handler();
+                handler6.postDelayed(new Runnable() {
+                    public void run() {
+                        checkMood(time);
+                    }
+                }, 3000);
             }
 
             private String checkDigit(int time) {
@@ -97,6 +92,12 @@ public class Tamagochi extends AppCompatActivity {
                 progressHealth.setProgress(checkProgress(time[2]));
 
                 time[2]--;
+                Handler handler6 = new Handler();
+                handler6.postDelayed(new Runnable() {
+                    public void run() {
+                        checkMood(time);
+                    }
+                }, 3000);
 
             }
 
@@ -111,7 +112,8 @@ public class Tamagochi extends AppCompatActivity {
         }.start();
 
         dish = findViewById(R.id.yellow);
-        kar = findViewById(R.id.karambola);
+
+
         dish.setOnLongClickListener(longClickListener);
         kar.setOnDragListener(dragListener);
         kar.setBackgroundResource(R.drawable.eat);
@@ -123,6 +125,8 @@ public class Tamagochi extends AppCompatActivity {
         sleepAnim = (AnimationDrawable) karIm.getBackground();
         sleep_button = findViewById(R.id.button_sleep);
         sleep_button.setBackgroundResource(R.drawable.sleep_off);
+
+
 
 
         kar.setOnLongClickListener(new View.OnLongClickListener() {
@@ -139,9 +143,15 @@ public class Tamagochi extends AppCompatActivity {
                         eatAnim = (AnimationDrawable) kar.getBackground();
                         kar.setOnDragListener(dragListener);
                         time[0]+=10;
+                        Handler handler5 = new Handler();
+                        handler5.postDelayed(new Runnable() {
+                            public void run() {
+                                checkMood(time);
+                            }
+                        }, 3000);
 
                     }
-                }, 2000);
+                }, 3000);
                 return false;
             }
         });
@@ -167,7 +177,7 @@ public class Tamagochi extends AppCompatActivity {
                             healthT.cancel();
                             sleep_button.setEnabled(true);
 
-                            healthT2 = new CountDownTimer(500000, 5000) {
+                            healthT2 = new CountDownTimer(500000, 2000) {
 
                                 public void onTick(long millisUntilFinished) {
                                     time[2] = checkProgress(time[2]);
@@ -175,6 +185,13 @@ public class Tamagochi extends AppCompatActivity {
                                     progressHealth.setProgress(checkProgress(time[2]));
 
                                     time[2]++;
+                                    Handler handler4 = new Handler();
+                                    handler4.postDelayed(new Runnable() {
+                                        public void run() {
+                                            checkMood(time);
+                                        }
+                                    }, 3000);
+
 
                                 }
 
@@ -235,6 +252,8 @@ public class Tamagochi extends AppCompatActivity {
                 case DragEvent.ACTION_DRAG_ENTERED:
                     final View view = (View) event.getLocalState();
                     if (view.getId()== R.id.yellow) {
+                        kar.setBackgroundResource(R.drawable.eat);
+                        eatAnim = (AnimationDrawable) kar.getBackground();
                         eatAnim.start();
                         time[1]+=20;
                         checkProgress(time[1]);
@@ -244,7 +263,7 @@ public class Tamagochi extends AppCompatActivity {
                             public void run() {
                                 eatAnim.stop();
                             }
-                        }, 2000);
+                        }, 3000);
                     }
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
@@ -256,7 +275,30 @@ public class Tamagochi extends AppCompatActivity {
         }
     };
 
+    public void checkMood(int[] time){
+        int total = IntStream.of(time).sum();
+                if (total<200) {
+                    Handler handler1 = new Handler();
+                    handler1.postDelayed(new Runnable() {
+                        public void run() {
+                            kar.setBackgroundResource(R.drawable.sad11);
 
+                            if (total<140) {
+                                kar.setBackgroundResource(R.drawable.sad21);
+                                if (total<60) {
+                                    kar.setBackgroundResource(R.drawable.sad31);
+                                }
+
+                            }
+                        }
+                    }, 3000);
+
+
+                }
+                else {
+                    kar.setBackgroundResource(R.drawable.happy1_new);
+                }
+    }
     public int checkProgress(int progress) {
         if (progress>100){
             progress=100;
