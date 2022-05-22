@@ -2,30 +2,22 @@ package com.example.myapplication;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.tomer.fadingtextview.FadingTextView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     private View layoutEncontrarPers;
@@ -167,6 +159,9 @@ public class MainActivity extends AppCompatActivity {
             tip.setVisibility(View.GONE);
         }
         public void run(){
+
+            Animation a = AnimationUtils.loadAnimation(MainActivity.this, R.anim.scale);
+            Animation b = AnimationUtils.loadAnimation(MainActivity.this, R.anim.scale2);
             final int[] firstTimer = {1};
             isRunning=true;
             while (true){
@@ -180,6 +175,8 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+
+
                                 tip.setVisibility(View.VISIBLE);
                                 imgAnim.animate().scaleX(1.5f).scaleY(1.5f).alpha(1f).setDuration(4000);
                                 imgAnim2.animate().scaleX(2f).scaleY(2f).alpha(0.5f).setDuration(4000);
@@ -189,6 +186,21 @@ public class MainActivity extends AppCompatActivity {
                                 if (var ==12) {
                                     tip.setText("Солнце, сделай глубокий вдох");
                                 }
+
+
+                                a.reset();
+                                tip.clearAnimation();
+                                tip.startAnimation(a);
+
+                                Handler handler1 = new Handler();
+                                handler1.postDelayed(new Runnable() {
+                                    public void run() {
+
+                                        b.reset();
+                                        tip.clearAnimation();
+                                        tip.startAnimation(b);
+                                    }
+                                }, 2000);
 
                                 firstTimer[0] +=1;
                             }
@@ -206,6 +218,20 @@ public class MainActivity extends AppCompatActivity {
                                 if (var ==10) {tip.setText(name+",задержите дыхание");}
                                 if (var ==11) {tip.setText(name+",задержи дыхание");}
                                 if (var ==12) {tip.setText("Солнце, задержи дыхание");}
+
+                                a.reset();
+                                tip.clearAnimation();
+                                tip.startAnimation(a);
+
+                                Handler handler1 = new Handler();
+                                handler1.postDelayed(new Runnable() {
+                                    public void run() {
+
+                                        b.reset();
+                                        tip.clearAnimation();
+                                        tip.startAnimation(b);
+                                    }
+                                }, 2000);
                                 firstTimer[0] +=1;
                             }
                         });
@@ -221,6 +247,20 @@ public class MainActivity extends AppCompatActivity {
                                 if (var ==10) {tip.setText(name+",сделайте выдох");}
                                 if (var ==11) {tip.setText(name+",сделай выдох");}
                                 if (var ==12) {tip.setText("Солнце, сделай выдох");}
+
+                                a.reset();
+                                tip.clearAnimation();
+                                tip.startAnimation(a);
+
+                                Handler handler1 = new Handler();
+                                handler1.postDelayed(new Runnable() {
+                                    public void run() {
+
+                                        b.reset();
+                                        tip.clearAnimation();
+                                        tip.startAnimation(b);
+                                    }
+                                }, 2000);
                                 firstTimer[0]+=1;
                             }
                         });
@@ -236,6 +276,20 @@ public class MainActivity extends AppCompatActivity {
                                 if (var ==10) {tip.setText(name+",задержите дыхание");}
                                 if (var ==11) {tip.setText(name+",задержи дыхание");}
                                 if (var ==12) {tip.setText("Солнце, задержи дыхание");}
+
+                                a.reset();
+                                tip.clearAnimation();
+                                tip.startAnimation(a);
+
+                                Handler handler1 = new Handler();
+                                handler1.postDelayed(new Runnable() {
+                                    public void run() {
+
+                                        b.reset();
+                                        tip.clearAnimation();
+                                        tip.startAnimation(b);
+                                    }
+                                }, 2000);
                                 firstTimer[0]=1;
                             }
                         });
@@ -254,6 +308,5 @@ public class MainActivity extends AppCompatActivity {
     private void tvSetText(String text, TextView tv) {
         runOnUiThread(new Runnable() { @Override public void run() { tv.setText(text); } });
     }
-
 
 }

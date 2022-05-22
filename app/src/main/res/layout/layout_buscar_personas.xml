@@ -8,7 +8,6 @@
     tools:context=".Start2">
 
 
-
         <ImageView
 
             android:id="@+id/Anim1"

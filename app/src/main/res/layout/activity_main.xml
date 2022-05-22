@@ -32,6 +32,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/buttonStart"
         android:fontFamily="@font/fontone"
+        android:paddingTop="30dp"
         android:gravity="top|center_horizontal"
         android:text=""
         android:textColor="#f0fad7"
