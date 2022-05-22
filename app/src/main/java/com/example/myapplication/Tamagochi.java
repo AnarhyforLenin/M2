@@ -7,7 +7,6 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.DragEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -15,14 +14,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Calendar;
 import java.util.TimeZone;
+import java.util.stream.IntStream;
 
 public class Tamagochi extends AppCompatActivity {
-    ImageView dish, bawl,karIm,bed;
-    ImageButton kar;
+    ImageView dish, window,karIm,bed,dark;
+    ImageButton kar,sleep_button;
     AnimationDrawable eatAnim, sleepAnim,sleepStaticAnim, happyAnim;
-    Button sleep_button;
     final int[] time = {100,100,100};
     boolean isTappedSleep = false;
     CountDownTimer healthT, healthT2;
@@ -31,6 +29,7 @@ public class Tamagochi extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tamagochi);
+        window = findViewById(R.id.window);
 
         TextView textHealth = (TextView)findViewById(R.id.health);
         ProgressBar progressHealth = (ProgressBar)findViewById(R.id.vertical_progressbar1);
@@ -40,11 +39,33 @@ public class Tamagochi extends AppCompatActivity {
         ProgressBar progressHappy = (ProgressBar)findViewById(R.id.vertical_progressbar3);
 
 
-        TextView textView = findViewById(R.id.test);
         TimeZone tz = TimeZone.getTimeZone("GMT+03");
         java.util.Calendar c = java.util.Calendar.getInstance(tz);
-        String time2 = String.format("%02d" , c.get(java.util.Calendar.HOUR_OF_DAY))+":"+String.format("%02d" , c.get(Calendar.MINUTE));
-        textView.setText(time2);
+        String time2 = String.format("%02d" , c.get(java.util.Calendar.HOUR_OF_DAY));
+
+        dark = findViewById(R.id.dark);
+        if (Integer.parseInt(time2) > 20){
+            window.setBackgroundResource(R.drawable.w1_night);
+
+        }
+        else {
+            dark.setVisibility(View.INVISIBLE);
+            window.setBackgroundResource(R.drawable.w1_day);
+        }
+        int total = IntStream.of(time).sum();
+        if (total<180) {
+            kar.setBackgroundResource(R.drawable.sad1);
+            if (total<90) {
+                kar.setBackgroundResource(R.drawable.sad2);
+                if (total<30) {
+                    kar.setBackgroundResource(R.drawable.sad3);
+                }
+
+            }
+
+        }
+        else {kar.setBackgroundResource(R.drawable.happy1);}
+
         new CountDownTimer(200000, 2000) {
 
             public void onTick(long millisUntilFinished) {
@@ -101,6 +122,7 @@ public class Tamagochi extends AppCompatActivity {
         karIm.setBackgroundResource(R.drawable.sleep);
         sleepAnim = (AnimationDrawable) karIm.getBackground();
         sleep_button = findViewById(R.id.button_sleep);
+        sleep_button.setBackgroundResource(R.drawable.sleep_off);
 
 
         kar.setOnLongClickListener(new View.OnLongClickListener() {
@@ -123,24 +145,27 @@ public class Tamagochi extends AppCompatActivity {
                 return false;
             }
         });
-
         sleep_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (isTappedSleep == false) {
                     karIm.setVisibility(View.VISIBLE);
                     kar.setVisibility(View.GONE);
                     bed.setVisibility(View.GONE);
                     sleepAnim.start();
+                    dark.setVisibility(View.VISIBLE);
+                    sleep_button.setEnabled(false);
+                    sleep_button.setBackgroundResource(R.drawable.sleep_on);
                     Handler handler2 = new Handler();
                     handler2.postDelayed(new Runnable() {
                         public void run() {
-
                             sleepAnim.stop();
                             karIm.setBackgroundResource(R.drawable.sleep_static);
                             sleepStaticAnim = (AnimationDrawable) karIm.getBackground();
                             sleepStaticAnim.start();
                             healthT.cancel();
+                            sleep_button.setEnabled(true);
 
                             healthT2 = new CountDownTimer(500000, 5000) {
 
@@ -168,6 +193,9 @@ public class Tamagochi extends AppCompatActivity {
 
                 }
                 else {
+
+                    dark.setVisibility(View.GONE);
+                    sleep_button.setBackgroundResource(R.drawable.sleep_off);
                     sleepStaticAnim.stop();
                     karIm.setVisibility(View.GONE);
                     kar.setVisibility(View.VISIBLE);
