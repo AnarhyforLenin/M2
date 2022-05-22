@@ -12,9 +12,9 @@
     <ImageButton
         android:id="@+id/blueButton"
         android:layout_width="40dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="20dp"
-        android:background="@drawable/pill3"
+        android:background="@drawable/pill31"
         android:contentDescription="@string/app_name"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,9 +26,9 @@
     <ImageButton
         android:id="@+id/greenButton"
         android:layout_width="40dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="140dp"
-        android:background="@drawable/pills2"
+        android:background="@drawable/pill11"
         android:contentDescription="@string/app_name"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,9 +40,9 @@
     <ImageButton
         android:id="@+id/pinkButton"
         android:layout_width="40dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="20dp"
-        android:background="@drawable/pill1"
+        android:background="@drawable/pill21"
         android:contentDescription="@string/app_name"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,9 +54,9 @@
     <ImageButton
         android:id="@+id/yellowButton"
         android:layout_width="40dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/pill5"
+        android:background="@drawable/pill41"
         android:contentDescription="@string/app_name"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -103,20 +103,20 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="36dp"
-        android:background="@drawable/mood_happy"
+        android:background="@drawable/strange_n2"
         android:contentDescription="@string/app_name"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.807"
+        app:layout_constraintVertical_bias="0.845"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/neyButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/mood_ney"
+        android:background="@drawable/happy_n4"
         android:contentDescription="@string/app_name"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -124,7 +124,7 @@
         app:layout_constraintHorizontal_bias="0.387"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.807"
+        app:layout_constraintVertical_bias="0.845"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <ImageButton
@@ -132,13 +132,13 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="200dp"
-        android:background="@drawable/mood_sad"
+        android:background="@drawable/sad_n2"
         android:contentDescription="@string/app_name"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.807"
+        app:layout_constraintVertical_bias="0.845"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <ImageButton
@@ -146,13 +146,13 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="260dp"
-        android:background="@drawable/mood_strange"
+        android:background="@drawable/ney_n2"
         android:contentDescription="@string/app_name"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.807"
+        app:layout_constraintVertical_bias="0.845"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <RadioButton
@@ -168,7 +168,7 @@
         app:layout_constraintHorizontal_bias="0.023"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73" />
+        app:layout_constraintVertical_bias="0.736" />
 
     <RadioButton
         android:id="@+id/radio_mood"
@@ -183,7 +183,7 @@
         app:layout_constraintHorizontal_bias="0.023"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radio_pills"
-        app:layout_constraintVertical_bias="0.133" />
+        app:layout_constraintVertical_bias="0.294" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

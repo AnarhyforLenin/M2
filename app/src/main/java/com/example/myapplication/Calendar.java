@@ -1,6 +1,5 @@
+
 package com.example.myapplication;
-
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -20,15 +19,13 @@ import com.google.gson.Gson;
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
-
-public class Calendar extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
+public class  Calendar extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
 	private ArrayList<ImageButton> buttonsPills = new ArrayList<>();
 	private ArrayList<ImageButton> buttonsMood = new ArrayList<>();
 	private ArrayList<Drawable> layersPills = new ArrayList<>();
@@ -48,21 +45,17 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 	private RadioButton radioPills;
 	private RadioButton radioMood;
 	private LayerDrawable currentLayer;
-
 	@Override
 	protected void onStart() {
 		super.onStart();
 	}
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		preferences = getSharedPreferences("com.example.protoitpe", Context.MODE_PRIVATE);
 		setContentView(R.layout.activity_calendar);
-
 		AtomicBoolean isTappedPill = new AtomicBoolean(false);
 		AtomicBoolean isTappedMood = new AtomicBoolean(false);
-
 		Bundle args = new Bundle();
 		java.util.Calendar cal = java.util.Calendar.getInstance();
 		args.putInt(CaldroidFragment.MONTH, cal.get(java.util.Calendar.MONTH) + 1);
@@ -73,28 +66,25 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 		FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 		fragmentTransaction.replace(R.id.ConstraintLayout, CALDROID_FRAGMENT);
 		fragmentTransaction.commit();
-
 		layersPills = new ArrayList<>(Arrays.asList(
 				ResourcesCompat.getDrawable(getResources(), R.drawable.pill11_3, null),
 				ResourcesCompat.getDrawable(getResources(), R.drawable.pill21_2, null),
 				ResourcesCompat.getDrawable(getResources(), R.drawable.pill31_2, null),
 				ResourcesCompat.getDrawable(getResources(), R.drawable.pill41_3, null),
-				ResourcesCompat.getDrawable(getResources(), R.drawable.pill5, null)
+				ResourcesCompat.getDrawable(getResources(), R.drawable.pill21, null)
 		));
-
 		layersMood = new ArrayList<>(Arrays.asList(
-				ResourcesCompat.getDrawable(getResources(), R.drawable.happy_n, null),
-				ResourcesCompat.getDrawable(getResources(), R.drawable.sad_n, null),
-				ResourcesCompat.getDrawable(getResources(), R.drawable.ney_n, null),
-				ResourcesCompat.getDrawable(getResources(), R.drawable.strange_n, null),
-				ResourcesCompat.getDrawable(getResources(), R.drawable.pill5, null)
+				ResourcesCompat.getDrawable(getResources(), R.drawable.happy_small, null),
+				ResourcesCompat.getDrawable(getResources(), R.drawable.sad_small, null),
+				ResourcesCompat.getDrawable(getResources(), R.drawable.ney_small, null),
+				ResourcesCompat.getDrawable(getResources(), R.drawable.strange_small, null),
+				ResourcesCompat.getDrawable(getResources(), R.drawable.pill21, null)
 		));
-
 		frames = new ArrayList<>(Arrays.asList(
+				(LayerDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.blue_pic1_frame_layer, null),
+				(LayerDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.blue_pic4_frame_layer, null),
 				(LayerDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.blue_pic2_frame_layer, null),
 				(LayerDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.blue_pic3_frame_layer, null),
-				(LayerDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.blue_pic5_frame_layer, null),
-				(LayerDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.blue_pic1_frame_layer, null),
 				(LayerDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.red_border_dark3, null)
 		));
 //        currentLayer = frames.get(0);
@@ -106,7 +96,6 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 				findViewById(R.id.yellowButton),
 				findViewById(R.id.cancelButton)
 		));
-
 		buttonsMood = new ArrayList<>(Arrays.asList(
 				findViewById(R.id.neyButton),
 				findViewById(R.id.sadButton),
@@ -114,7 +103,6 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 				findViewById(R.id.happyButton),
 				findViewById(R.id.cancelButton2)
 		));
-
 		radioPills = findViewById(R.id.radio_pills);
 		radioPills.setOnClickListener(v -> {
 			if (!isTappedPill.get()) {
@@ -137,28 +125,21 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 				radioMood.setChecked(false);
 			}
 		});
-
 		buttonsPills.forEach(x -> x.setOnClickListener(this));
 		buttonsPills.forEach(x -> x.setOnLongClickListener(this));
-
 		buttonsMood.forEach(x -> x.setOnClickListener(this));
 		buttonsMood.forEach(x -> x.setOnLongClickListener(this));
-
 		buttonsPills.get(0).setBackgroundResource(R.drawable.pill11);
 		buttonsPills.get(1).setBackgroundResource(R.drawable.pill21);
 		buttonsPills.get(2).setBackgroundResource(R.drawable.pill31);
 		buttonsPills.get(3).setBackgroundResource(R.drawable.pill41);
 		buttonsPills.get(4).setBackgroundResource(R.drawable.cancel);
-
 		selectedDate = new Date(preferences.getLong("selectedDate", System.currentTimeMillis())); //check
-
 		selectedPillButton = this.findViewById(preferences.getInt("selectedButtonId", -1));
 		selectedPillTriangleButton = this.findViewById(preferences.getInt("selectedTriangleButtonId", -1));
 		this.readHashMapOfDates();
-
 		currentFrame = frames.get(preferences.getInt("currentFrame", 4));        //frames.indexOf(currentFrame)
 		//currentPicturePills = preferences.getInt("currentColor", -1) != -1 ? layersPills.get(preferences.getInt("currentColor", -1)) : null;        //colors.indexOf(currentColor)
-
 		for (Date date : markedDates.keySet()) {
 			if (Objects.equals(this.selectedDate, date)) {
 				int index = layersPills.indexOf(markedDates.get(date));
@@ -174,12 +155,10 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 		if (selectedPillButton != null)
 			this.toggleButton(selectedPillButton, 1);
 		CALDROID_FRAGMENT.setBackgroundDrawableForDate(currentFrame, selectedDate);
-
 		if (selectedPillButton != null)
 			this.toggleButton(selectedPillButton, 1);
 		if (selectedPillTriangleButton != null)
 			this.toggleButton(selectedPillTriangleButton, 2);
-
 		final CaldroidListener listener = new CaldroidListener() {
 			@Override
 			public void onSelectDate(Date date, View view) {
@@ -235,7 +214,6 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 //				}
 //				else markedDates.put(date, frames.get(4));
 //				CALDROID_FRAGMENT.setBackgroundDrawableForDate(markedDates.get(date), date);
-
 //				else
 //				{
 //					Drawable[] tempDrawable = new Drawable[1];
@@ -285,7 +263,6 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 				if (tempButtons != null && tempButtons.size() > 0)
 					Objects.requireNonNull(getButtonByDate(selectedDate)).forEach(x -> toggleButton(x, 1));
 				currentFrame = frames.get(4);
-
 				//CALDROID_FRAGMENT.setBackgroundDrawableForDate(currentFrame, selectedDate);
 				CALDROID_FRAGMENT.refreshView();
 				editor.putLong("selectedDate", selectedDate.getTime());
@@ -301,8 +278,8 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 	@Override
 	public boolean onLongClick(View v) {
 		if (markedDates.isEmpty()) return true;
-		if (selectedPillTriangleButton != null)
-			this.toggleButton(selectedPillTriangleButton, 0);
+//		if (selectedPillTriangleButton != null)
+//			this.toggleButton(selectedPillTriangleButton, 0);
 		switch (v.getId()) {
 			case R.id.blueButton:
 				holdButton(0, false);
@@ -316,7 +293,6 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 			case R.id.yellowButton:
 				holdButton(3, false);
 				break;
-
 			case R.id.neyButton:
 				holdButton(0, true);
 				break;
@@ -337,7 +313,7 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 		editor.putInt("currentFrame", frames.indexOf(currentFrame));
 		//editor.putInt("currentColor", currentPicturePills == null ? -1 : layersPills.indexOf(currentPicturePills));
 		editor.apply();
-		CALDROID_FRAGMENT.setBackgroundDrawableForDate(currentFrame, selectedDate);
+		//CALDROID_FRAGMENT.setBackgroundDrawableForDate(currentFrame, selectedDate);
 		//caldroidFragment.setBackgroundDrawableForDate(ResourcesCompat.getDrawable(getResources(), R.drawable.blue_frame, null), selectedDate);
 		CALDROID_FRAGMENT.refreshView();
 		return true;
@@ -372,7 +348,6 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 			return;
 		}
 		if (selectedPillTriangleButton != null || selectedMoodTriangleButton != null) return;
-
 		switch(v.getId()) {
 			case R.id.blueButton:
 				clickButton(0, false);
@@ -386,7 +361,6 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 			case R.id.yellowButton:
 				clickButton(3, false);
 				break;
-
 			case R.id.neyButton:
 				clickButton(0, true);
 				break;
@@ -416,32 +390,31 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 		if (button == null || state < 0 || state > 2) return;
 		switch (button.getId()) {
 			case R.id.blueButton:
-				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.blue_pic2_frame_layer : R.drawable.blue_triangle : R.drawable.pill3);
+				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.pill11_selected : R.drawable.pill1_triangle : R.drawable.pill11);
 				break;
 			case R.id.greenButton:
-				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.blue_pic3_frame_layer : R.drawable.green_triangle : R.drawable.pill1);
+				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.pilll21_selected : R.drawable.pill21_triangle : R.drawable.pill21);
 				break;
 			case R.id.pinkButton:
-				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.blue_pic5_frame_layer : R.drawable.pink_triangle : R.drawable.pill5);
+				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.pill31_selected : R.drawable.pill31_triangle : R.drawable.pill31);
 				break;
 			case R.id.yellowButton:
-				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.blue_pic1_frame_layer : R.drawable.yellow_triangle : R.drawable.pills2);
+				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.pill41_selected : R.drawable.pill41_triangle : R.drawable.pill41);
 				break;
 			case R.id.cancelButton:
 				button.setBackgroundResource(R.drawable.cancel);
 				break;
-
 			case R.id.neyButton:
-				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.ney_selected : R.drawable.blue_triangle : R.drawable.mood_ney);
+				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.happy_selected : R.drawable.happy_n5 : R.drawable.happy_n4);
 				break;
 			case R.id.sadButton:
-				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.sad_selected : R.drawable.green_triangle : R.drawable.mood_sad);
+				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.sad_selected : R.drawable.sad_n : R.drawable.sad_n2);
 				break;
 			case R.id.strangeButton:
-				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.strange_selected : R.drawable.pink_triangle : R.drawable.mood_strange);
+				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.ney_selected : R.drawable.ney_n : R.drawable.ney_n2);
 				break;
 			case R.id.happyButton:
-				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.happy_selected : R.drawable.yellow_triangle : R.drawable.mood_happy);
+				button.setBackgroundResource(state != 0 ? state == 1 ? R.drawable.strange_selected : R.drawable.strange_n : R.drawable.strange_n2);
 				break;
 			default:
 				return;
@@ -483,26 +456,55 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 		//markedDates.put(getDateFromKey("Date" + i), layersPills.get(preferences.getInt(("Color" + i), 0)));
 	}
 	private void holdButton(int num, boolean state) {
-		if (Objects.equals(selectedPillTriangleButton, buttonsPills.get(num))) {
-			for (Date date : markedDates.keySet()) {
-				if (Objects.equals(this.selectedDate, date)) {
-					int index = layersPills.indexOf(markedDates.get(date));
-					currentFrame = frames.get(index);
-					selectedPillButton = buttonsPills.get(index);
-				}
-				CALDROID_FRAGMENT.setBackgroundDrawableForDate(markedDates.get(date), date);
+//		if (Objects.equals(selectedPillTriangleButton, buttonsPills.get(num))) {
+//			for (Date date : markedDates.keySet()) {
+//				if (Objects.equals(this.selectedDate, date)) {
+//					int index = layersPills.indexOf(markedDates.get(date));
+//					currentFrame = frames.get(index);
+//					selectedPillButton = buttonsPills.get(index);
+//				}
+//				CALDROID_FRAGMENT.setBackgroundDrawableForDate(markedDates.get(date), date);
+//			}
+//			this.toggleButton(selectedPillTriangleButton, 0);
+//			selectedPillTriangleButton = null;
+//			if (selectedPillButton != null)
+//				this.toggleButton(selectedPillButton, 1);
+//			SharedPreferences.Editor editor;
+//			editor = preferences.edit();
+//			editor.putInt("selectedButton", selectedPillButton == null ? -1 : selectedPillButton.getId());
+//			editor.putInt("selectedTriangleButton", selectedPillTriangleButton == null ? -1 : selectedPillTriangleButton.getId());
+//			editor.apply();
+//			CALDROID_FRAGMENT.setBackgroundDrawableForDate(currentFrame, selectedDate);
+//			CALDROID_FRAGMENT.refreshView();
+//			return;
+//		}
+		if (!state ? selectedPillTriangleButton != null : selectedMoodTriangleButton != null)
+			this.toggleButton(!state ? selectedPillTriangleButton : selectedMoodTriangleButton, 0);
+		if (!state ? Objects.equals(selectedPillTriangleButton, buttonsPills.get(num)) : Objects.equals(selectedMoodTriangleButton, buttonsMood.get(num)))
+		{
+			HashMap<Date, LayerDrawable> totallyNotMarkedDates = (HashMap<Date, LayerDrawable>) markedDates.clone();
+			for (Date date : markedDates.keySet())
+			{
+				ArrayList<Drawable> layers = layerDrawableToDrawables(markedDates.get(date));
+				layers.forEach(x -> x.setVisible(true, true));
+				totallyNotMarkedDates.remove(date);
+				totallyNotMarkedDates.put(date, drawablesToLayerDrawable(layers));
+				CALDROID_FRAGMENT.setBackgroundDrawableForDate(drawablesToLayerDrawable(layers), date);
 			}
-			this.toggleButton(selectedPillTriangleButton, 0);
-			selectedPillTriangleButton = null;
-			if (selectedPillButton != null)
-				this.toggleButton(selectedPillButton, 1);
-			SharedPreferences.Editor editor;
-			editor = preferences.edit();
-			editor.putInt("selectedButton", selectedPillButton == null ? -1 : selectedPillButton.getId());
-			editor.putInt("selectedTriangleButton", selectedPillTriangleButton == null ? -1 : selectedPillTriangleButton.getId());
-			editor.apply();
-			CALDROID_FRAGMENT.setBackgroundDrawableForDate(currentFrame, selectedDate);
-			CALDROID_FRAGMENT.refreshView();
+			markedDates = totallyNotMarkedDates;
+			if (!state) {
+				this.toggleButton(selectedPillTriangleButton, 0);
+				selectedPillTriangleButton = null;
+				if (selectedPillButton != null)
+					this.toggleButton(selectedPillButton, 1);
+			}
+			else
+			{
+				this.toggleButton(selectedMoodTriangleButton, 0);
+				selectedMoodTriangleButton = null;
+				if (selectedMoodButton != null)
+					this.toggleButton(selectedMoodButton, 1);
+			}
 			return;
 		}
 		if (!state) {
@@ -518,7 +520,6 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 			selectedMoodButton = null;
 			toggleButton(selectedMoodTriangleButton, 2);
 		}
-
 //		for (Date date : markedDates.keySet()) {
 //			if (!Objects.equals(markedDates.get(date), layersPills.get(num))) {
 //				if (Objects.equals(this.selectedDate, date))
@@ -533,12 +534,14 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 //				//currentPicturePills = layersPills.get(num);
 //			}
 //		}
-		HashMap<Date, LayerDrawable> totallyNotMarkedDates = markedDates;
+		@SuppressWarnings("unchecked")
+		HashMap<Date, LayerDrawable> totallyNotMarkedDates = (HashMap<Date, LayerDrawable>) markedDates.clone();
 		for (Date date : markedDates.keySet())
 		{
 			ArrayList<Drawable> layers = layerDrawableToDrawables(Objects.requireNonNull(markedDates.get(date)));
 			for (Drawable layer : layers)
-				if (layersPills.contains(layer) == !state && (!state ? !Objects.equals(layer, layersPills.get(num)) : !Objects.equals(layer, layersMood.get(num))))
+				if (((layersPills.contains(layer) == !state) && (!state ? !Objects.equals(layer, layersPills.get(num)) : !Objects.equals(layer, layersMood.get(num))))
+						&& !(Objects.equals(frames.get(4), layer)))
 					layer.setVisible(false, true);
 			totallyNotMarkedDates.remove(date);
 			totallyNotMarkedDates.put(date, drawablesToLayerDrawable(layers));
@@ -547,14 +550,11 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 		markedDates = totallyNotMarkedDates;
 		ArrayList<Drawable> outLayers = new ArrayList<>();
 		for (Date date : markedDates.keySet()) {
+			outLayers = new ArrayList<>();
 			ArrayList<Drawable> layers = layerDrawableToDrawables(Objects.requireNonNull(markedDates.get(date)));
 			for (Drawable layer : layers)
-			{
 				if (layer.isVisible())
-				{
 					outLayers.add(layer);
-				}
-			}
 			CALDROID_FRAGMENT.setBackgroundDrawableForDate(drawablesToLayerDrawable(outLayers), date);
 		}
 	}
@@ -572,20 +572,16 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 			SharedPreferences.Editor editor;
 			editor = preferences.edit();
 			this.toggleButton(!state ? selectedPillButton : selectedMoodButton, 0);
-
 			if (!state)
 				this.selectedPillButton = null;
 			else
 				this.selectedMoodButton = null;
-
 			currentFrame = frames.get(4);
 			CALDROID_FRAGMENT.setBackgroundDrawableForDate(currentFrame, selectedDate);
-
 			this.updateHashMapOfDates();
 			CALDROID_FRAGMENT.refreshView();
 			currentLayer = drawablesToLayerDrawable(layers);
 			markedDates.put(selectedDate, currentLayer);
-
 			editor.putInt("selectedButton", selectedPillButton == null ? -1 : selectedPillButton.getId());
 			editor.putInt("currentFrame", frames.indexOf(currentFrame));
 			//editor.putInt("currentColor", currentPicturePills == null ? -1 : layersPills.indexOf(currentPicturePills));
@@ -668,4 +664,3 @@ public class Calendar extends AppCompatActivity implements View.OnClickListener,
 //		return false;
 //	}
 }
-
