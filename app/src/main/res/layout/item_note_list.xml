@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:gravity="center"
+    android:background="#b8d480">
+
+    <TextView
+        android:id="@+id/note_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:minHeight="64dp"
+        android:gravity="center_vertical"
+        tools:text="some text for testing"
+        android:fontFamily="@font/fontone"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="20dp"
+        android:layout_height="20dp">
+        <ImageView
+            android:id="@+id/red_tag"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/red"
+            android:scaleType="centerCrop"
+            tools:ignore="MissingConstraints"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/blue_tag"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/bluepng"
+            android:scaleType="centerCrop"
+            tools:ignore="MissingConstraints"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/green_tag"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/greenpng"
+            android:scaleType="centerCrop"
+            tools:ignore="MissingConstraints"
+            android:visibility="gone"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <CheckBox
+        android:id="@+id/completed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выполнено"
+        android:layout_marginLeft="8dp"
+        android:fontFamily="@font/fontone"
+        android:textColor="#96B160"/>
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="16dp"
+        android:src="@drawable/cancel"
+        android:scaleType="fitXY"/>
+
+</LinearLayout>

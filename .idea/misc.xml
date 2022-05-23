@@ -56,7 +56,9 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_calendar.xml" value="0.264" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_main2.xml" value="0.264" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_main4.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_main_screen.xml" value="0.264" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_note_details.xml" value="0.1699909338168631" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_sshit3.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_start2.xml" value="0.264" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_start3.xml" value="0.264" />
@@ -64,11 +66,14 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_start5.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_startscreen.xml" value="0.16" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_tamagochi.xml" value="0.28978622327790976" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/dialog.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/item_note_list.xml" value="0.1699909338168631" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/keyboard.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/layout_buscar_personas.xml" value="0.2" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/preview.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/view_row.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/menu/menu_details.xml" value="0.264" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.127" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/MyApplication2/app/src/main/res/xml/method.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/HP/AppData/Local/Android/Sdk/platforms/android-31/data/res/drawable/progress_indeterminate_horizontal.xml" value="0.2225" />

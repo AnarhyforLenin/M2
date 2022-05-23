@@ -18,4 +18,8 @@
     <color name="green">#FF99FF99</color>
     <color name="yellow">#FFFFFF66</color>
     <color name="pink">#FFFF007F</color>
+
+    <color name="colorPrimary">#6a9c53</color>
+    <color name="colorPrimaryDark">#6a9c53</color>
+    <color name="colorAccent">#6a9c53</color>
 </resources>

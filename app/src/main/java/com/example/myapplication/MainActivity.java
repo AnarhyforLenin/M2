@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                         startActivity(intent);
+                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                         finish();
                     }
                 }, 60000);
