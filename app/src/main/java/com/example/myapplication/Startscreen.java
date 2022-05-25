@@ -19,6 +19,7 @@ public class Startscreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent swap1 = new Intent(Startscreen.this, Start2.class);
                 startActivity(swap1);
+
             }
         });
 

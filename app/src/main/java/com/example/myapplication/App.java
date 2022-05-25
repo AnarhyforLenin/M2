@@ -4,6 +4,9 @@ import android.app.Application;
 
 import androidx.room.Room;
 
+import com.example.myapplication.data.AppDatabase;
+import com.example.myapplication.data.NoteDao;
+
 public class App extends Application {
 
     private AppDatabase database;

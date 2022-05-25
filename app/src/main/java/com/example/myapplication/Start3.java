@@ -3,11 +3,13 @@ package com.example.myapplication;
 import androidx.annotation.IdRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.SavedStateHandle;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,11 +28,14 @@ public class Start3 extends AppCompatActivity {
     RadioButton r1, r2, r3;
     public String full_name, name;
     RadioGroup radio;
+    SharedPreferences preferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start3);
+        preferences = getSharedPreferences("com.example.myapplication", Context.MODE_PRIVATE);
         r1 = findViewById(R.id.r1);
         r2 = findViewById(R.id.r2);
         r3 = findViewById(R.id.r3);
@@ -67,6 +72,7 @@ public class Start3 extends AppCompatActivity {
                                     MainActivity2.name=full_name;
                                     intent5.putExtra("var", 10);
                                     MainActivity2.var = 10;
+                                    MainActivity2.saveEverything();
                                     startActivity(intent5);
                                 }
                             });
@@ -104,6 +110,7 @@ public class Start3 extends AppCompatActivity {
                                     MainActivity2.name = name;
                                     intent5.putExtra("var",11);
                                     MainActivity2.var = 11;
+                                    MainActivity2.saveEverything();
                                     if (he.isChecked()) {
                                         intent5.putExtra("radiochosen",1);
                                     }
@@ -140,6 +147,7 @@ public class Start3 extends AppCompatActivity {
                                 public void onClick(View v) {
                                     intent5.putExtra("var",12);
                                     MainActivity2.var = 12;
+                                    MainActivity2.saveEverything();
                                     startActivity(intent5);
                                 }
                             });
@@ -163,4 +171,5 @@ public class Start3 extends AppCompatActivity {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
+
 }

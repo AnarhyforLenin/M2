@@ -20,7 +20,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainScreen extends AppCompatActivity {
-    ImageButton karambola;
+    ImageButton karambola,game,calendar, todo;
     AnimationDrawable animation;
     ImageButton sos;
 
@@ -29,6 +29,35 @@ public class MainScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
         sos = findViewById(R.id.next34_button);
+        todo =findViewById(R.id.tools_icon);
+        game = findViewById(R.id.game_icon);
+        game = findViewById(R.id.tools_icon);
+        calendar = findViewById(R.id.calendar_icon);
+        game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentGame = new Intent(MainScreen.this, Tamagochi.class);
+                startActivity(intentGame);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCalendar = new Intent(MainScreen.this, Calendar.class);
+                startActivity(intentCalendar);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+        todo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentCalendar = new Intent(MainScreen.this, App.class);
+                startActivity(intentCalendar);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+            }
+        });
+
         final SharedPreferences loginData = getSharedPreferences("loginData", MODE_PRIVATE);
         boolean firstStart = loginData.getBoolean("firstStart", true);
         if(firstStart) {
@@ -38,6 +67,8 @@ public class MainScreen extends AppCompatActivity {
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
+
+
         karambola = (ImageButton)findViewById(R.id.karambola);
         karambola.setBackgroundResource(R.drawable.happy);
         animation = (AnimationDrawable) karambola.getBackground();

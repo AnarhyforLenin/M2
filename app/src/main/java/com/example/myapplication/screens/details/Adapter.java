@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.screens.details;
 
 import android.app.Activity;
 import android.graphics.Paint;
@@ -13,6 +13,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SortedList;
+
+import com.example.myapplication.R;
+import com.example.myapplication.model.Note;
+import com.example.myapplication.model.Tag;
+import com.example.myapplication.App;
 
 import java.util.List;
 

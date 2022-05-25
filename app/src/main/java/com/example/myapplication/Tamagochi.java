@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
 import android.content.ClipData;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -14,30 +17,44 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Date;
 import java.util.TimeZone;
 import java.util.stream.IntStream;
 
 public class Tamagochi extends AppCompatActivity {
     ImageView dish, window,karIm,bed,dark;
-    ImageButton kar,sleep_button;
+    ImageButton kar,sleep_button,home;
     AnimationDrawable eatAnim, sleepAnim,sleepStaticAnim, happyAnim;
-    final int[] time = {100,100,100};
+    static int[] time = {100,100,100};
     boolean isTappedSleep = false;
+    private SharedPreferences preferences;
     CountDownTimer healthT, healthT2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tamagochi);
-        window = findViewById(R.id.window);
 
+        window = findViewById(R.id.window);
+        preferences = getSharedPreferences("com.example.myapplication", Context.MODE_PRIVATE);
+        updateEverything();
+        home = findViewById(R.id.tools_icon);
         TextView textHealth = (TextView)findViewById(R.id.health);
         ProgressBar progressHealth = (ProgressBar)findViewById(R.id.vertical_progressbar1);
         TextView textEat = (TextView)findViewById(R.id.eat);
         ProgressBar progressEat = (ProgressBar)findViewById(R.id.vertical_progressbar2);
         TextView textHappy = (TextView)findViewById(R.id.happyness);
         ProgressBar progressHappy = (ProgressBar)findViewById(R.id.vertical_progressbar3);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveEverything();
+                Intent intent7 = new Intent(Tamagochi.this, MainScreen.class);
+                startActivity(intent7);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
+            }
+        });
 
         TimeZone tz = TimeZone.getTimeZone("GMT+03");
         java.util.Calendar c = java.util.Calendar.getInstance(tz);
@@ -58,14 +75,37 @@ public class Tamagochi extends AppCompatActivity {
         new CountDownTimer(200000, 2000) {
 
             public void onTick(long millisUntilFinished) {
-                time[0]=checkProgress(time[0]);
-                textEat.setText(checkDigit(time[0]));
-                progressEat.setProgress(checkProgress(time[0]));
+
                 time[1]=checkProgress(time[1]);
                 textHappy.setText(checkDigit(time[1]));
                 progressHappy.setProgress(checkProgress(time[1]));
 
                 time[1]--;
+                Handler handler6 = new Handler();
+                handler6.postDelayed(new Runnable() {
+                    public void run() {
+                        checkMood(time);
+                    }
+                }, 3000);
+            }
+
+            private String checkDigit(int time) {
+                return String.valueOf(time);
+            }
+
+            public void onFinish() {
+
+            }
+
+        }.start();
+        new CountDownTimer(200000, 2500) {
+
+            public void onTick(long millisUntilFinished) {
+                time[0]=checkProgress(time[0]);
+                textEat.setText(checkDigit(time[0]));
+                progressEat.setProgress(checkProgress(time[0]));
+
+
                 time[0]--;
                 Handler handler6 = new Handler();
                 handler6.postDelayed(new Runnable() {
@@ -163,6 +203,7 @@ public class Tamagochi extends AppCompatActivity {
                     karIm.setVisibility(View.VISIBLE);
                     kar.setVisibility(View.GONE);
                     bed.setVisibility(View.GONE);
+                    karIm.setBackgroundResource(R.drawable.sleep);
                     sleepAnim.start();
                     dark.setVisibility(View.VISIBLE);
                     sleep_button.setEnabled(false);
@@ -308,4 +349,22 @@ public class Tamagochi extends AppCompatActivity {
         }
         return progress;
     }
+
+    private void saveEverything() {
+        SharedPreferences.Editor editor;
+        editor = preferences.edit();
+
+        editor.putInt("time1",time[1]);
+        editor.putInt("time0",time[0]);
+        editor.putInt("time2",time[2]);
+//		this.putDateToSharedPreference("selectedDate", selectedDate);
+        editor.apply();
+    }
+    private void updateEverything() {
+        time[0] = preferences.getInt("time0",100);
+        time[1] = preferences.getInt("time1",100);
+        time[2] = preferences.getInt("time2",100);
+    }
+
+
 }

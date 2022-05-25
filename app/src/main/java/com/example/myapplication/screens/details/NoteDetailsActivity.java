@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.screens.details;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +14,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.myapplication.R;
+import com.example.myapplication.model.Note;
+import com.example.myapplication.model.Tag;
+import com.example.myapplication.App;
 
 public class NoteDetailsActivity extends AppCompatActivity {
 

@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.pdf.PdfRenderer;
 import android.os.Bundle;
@@ -30,14 +32,16 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     static String name = "";
-    static int var = 12;
+    static int var;
     TextView q1,q2,right;
+    static SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
+        preferences = getSharedPreferences("com.example.myapplication", Context.MODE_PRIVATE);
+        updateEverything();
 
         int[] photos={R.drawable.f1, R.drawable.f2, R.drawable.f3, R.drawable.f4, R.drawable.f5, R.drawable.f6, R.drawable.f7, R.drawable.f8, R.drawable.f9, R.drawable.f100, R.drawable.f110, R.drawable.f120, R.drawable.f130, R.drawable.f140, R.drawable.f150};
 
@@ -306,5 +310,15 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
 
-
+    public static void saveEverything() {
+        SharedPreferences.Editor editor;
+        editor = preferences.edit();
+        editor.putInt("var",12);
+        editor.putString("name","");
+        editor.apply();
+    }
+    public static void updateEverything() {
+        name = preferences.getString("name","");
+        var = preferences.getInt("var",12);
+    }
 }

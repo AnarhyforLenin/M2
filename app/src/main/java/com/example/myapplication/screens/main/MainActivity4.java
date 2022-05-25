@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.screens.main;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +13,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.screens.details.Adapter;
+import com.example.myapplication.screens.details.NoteDetailsActivity;
+import com.example.myapplication.R;
+import com.example.myapplication.model.Note;
+import com.example.myapplication.model.Tag;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;

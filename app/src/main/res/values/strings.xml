@@ -6,7 +6,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="app_name">Список дел</string>
+    <string name="app_name">Less Stress</string>
     <string name="action_settings">Settings</string>
     <string name="note_text">Введите напоминание</string>
     <string name="note_details_title">Напоминание</string>

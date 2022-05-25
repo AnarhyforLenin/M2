@@ -1,7 +1,10 @@
-package com.example.myapplication;
+package com.example.myapplication.screens.main;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.myapplication.model.Note;
+import com.example.myapplication.App;
 
 import java.util.List;
 
